@@ -12,25 +12,34 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="-– title: “Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA 29 CFR 1910.147 nhúng mã băm Cryptographic SHA-256” date: 2026-11-06T00:00:00&#43;07:00 draft: false description: “Giải pháp chuẩn hóa quy trình an toàn cách ly năng lượng nguy hiểm (LOTO) song ngữ Anh - Việt kết hợp xác thực tính toàn vẹn dữ liệu bằng Cryptographic SHA-256.” tags: [“OT Safety”, “LOTO”, “OSHA 1910.147”, “SHA-256”, “SOP Automation”, “Async-First”] categories: [“Industrial OT Safety”] # Cấu hình giao diện Hugo Book Theme bookToC: true # Bật Mục lục tự động bên phải bài viết bookSearchExclude: false # Cho phép thanh tìm kiếm quét bài viết này — ## 1. Đặt vấn đề: Rủi ro An toàn &amp; Tính toàn vẹn SOPs tại nhà máy Trong vận hành bảo trì nhà máy công nghiệp, sự cố cách ly năng lượng nguy hiểm (Lockout/Tagout - LOTO) là một trong những nguyên nhân hàng đầu gây chấn thương nghiêm trọng hoặc tử vong cho kỹ thuật viên [4]. Các hạn chế cố hữu của hệ thống quy trình an toàn (SOPs) truyền thống bao gồm: - **Rủi ro sai lệch phiên bản (Tampering Risk)**: Tài liệu in giấy hoặc file Word/Excel tĩnh dễ bị chỉnh sửa thông số thực địa mà không lưu lại dấu vết xác thực [4, 5]. - **Bất đồng ngôn ngữ thực địa (Bilingual Barrier)**: Thiếu sự nhất quán giữa thuật ngữ kỹ thuật Tiếng Anh chuẩn quốc tế và thao tác Tiếng Việt của kỹ thuật viên ca vận hành. - **Thiếu cơ chế xác minh tức thì (Zero-Trust Gap)**: Nhân sự an toàn (EHS) không có phương thức số hóa để đối soát nhanh tính toàn vẹn của quy trình trước khi ký duyệt cấp phép làm việc (Work Permit). — ## 2. Giải pháp Kiến trúc: SHA-256 Verified LOTO SOPs Kit Bộ quy trình LOTO SOPs Kit được thiết kế dưới dạng cấu trúc dữ liệu mô hình hóa (JSON Payload), tích hợp thuật toán mã hóa mật mã học **Cryptographic SHA-256** nhằm đạt được hai mục tiêu lõi [1, 4]: 1. **Zero-Tampering Verification**: Mỗi quy trình LOTO phát hành được gắn liền với một mã băm 64 ký tự hex độc bản. Bất kỳ sự thay đổi trái phép nào trên nội dung thao tác (dù chỉ 1 ký tự hay 1 khoảng trắng) sẽ làm thay đổi toàn bộ mã băm, tự động kích hoạt cảnh báo quy trình không hợp lệ [1, 4]. 2. **OSHA 29 CFR 1910.147 Compliance**: Đóng gói sẵn cấu trúc các nguồn năng lượng nguy hiểm (Electrical, Mechanical, Hydraulic, Pneumatic, Thermal) và bước kiểm tra trạng thái năng lượng bằng zero (Zero Energy State Verification) [1, 4]. — ## 3. Script Python Xác thực Tính toàn vẹn SOP Payload Đoạn script Python dưới đây minh họa cách tự động hóa mã hóa và kiểm tra tính toàn vẹn của một JSON Payload LOTO SOPs trước khi đẩy dữ liệu vào hệ thống quản lý bảo trì (CMMS) [1, 6]: ```python import hashlib import json def generate_loto_sha256(sop_payload: dict) -&gt; str: &#34;&#34;&#34; Tạo mã băm Cryptographic SHA-256 cho quy trình LOTO SOPs Payload. Đảm bảo tính duy nhất và chống biến đổi dữ liệu (Zero-Tampering). &#34;&#34;&#34; # Chuẩn hóa chuỗi JSON (sắp xếp key và định dạng mã hóa UTF-8) serialized_data = json.dumps(sop_payload, sort_keys=True, ensure_ascii=False) # Tính toán mã băm SHA-256 sha256_hash = hashlib.sha256(serialized_data.encode(‘utf-8’)).hexdigest() return sha256_hash # Dynamic Payload Mẫu: Quy trình LOTO cho Máy bơm ly tâm BĐS/Thực địa FAC_GLOBAL_01 / PUMP-201A loto_sample_payload = { “sop_id”: “LOTO-PUMP-201A-V1”, “standard_reference”: “OSHA 29 CFR 1910.147”, “asset_id”: “FAC_GLOBAL_01_PUMP_201A”, “isolation_steps”: [ { “step_number”: 1, “energy_type”: “Electrical (380V AC)”, “isolation_point”: “MCC-01 Feeder Breaker CB-12”, “action_en”: “Switch OFF MCC-01 CB-12 and apply Hasp/Padlock with Danger Tag.”, “action_vi”: “Ngắt CB-12 tại tủ MCC-01, khóa Càng khóa/Ổ khóa và treo Thẻ Cảnh báo.”, “zero_energy_verification”: “Measure 3-phase voltage with calibrated Multimeter (0V AC).” }, { “step_number”: 2, “energy_type”: “Hydraulic / Fluid Pressure”, “isolation_point”: “Suction Valve V-101 &amp; Discharge Valve V-102”, “action_en”: “Close Valve V-101 and V-102, apply Cable Lockout.”, “action_vi”: “Đóng van xả V-101 và V-102, xả áp suất dư và khóa cáp LOTO.”, “zero_energy_verification”: “Inspect Pressure Gauge PG-201 reading exactly 0 Bar.” } ] } # Thực thi tạo mã băm xác thực calculated_hash = generate_loto_sha256(loto_sample_payload) print(f&#34;=== LOTO SOPs SHA-256 VERIFICATION ===&#34;) print(f&#34;SOP ID: {loto_sample_payload[‘sop_id’]}&#34;) print(f&#34;Asset ID: {loto_sample_payload[‘asset_id’]}&#34;) print(f&#34;Cryptographic SHA-256 Hash: {calculated_hash}&#34;)
-">
+<meta name="description" content="Giải pháp số hóa và chuẩn hóa quy trình an toàn cách ly năng lượng nguy hiểm (LOTO) chuẩn OSHA 29 CFR 1910.147 kết hợp mã băm bảo mật SHA-256 chống giả mạo dữ liệu thực địa.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
 <meta name="color-scheme" content="light dark">
 <meta name="format-detection" content="telephone=no"><meta property="og:url" content="http://localhost:1313/ot-tech-blog/posts/loto-sop-sha256/">
 	<meta property="og:site_name" content="Nguyễn Trí Dũng | Industrial OT &amp; Asset Management">
-	<meta property="og:title" content="Nguyễn Trí Dũng | Industrial OT &amp; Asset Management">
-	<meta property="og:description" content="-– title: “Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA 29 CFR 1910.147 nhúng mã băm Cryptographic SHA-256” date: 2026-11-06T00:00:00&#43;07:00 draft: false description: “Giải pháp chuẩn hóa quy trình an toàn cách ly năng lượng nguy hiểm (LOTO) song ngữ Anh - Việt kết hợp xác thực tính toàn vẹn dữ liệu bằng Cryptographic SHA-256.” tags: [“OT Safety”, “LOTO”, “OSHA 1910.147”, “SHA-256”, “SOP Automation”, “Async-First”] categories: [“Industrial OT Safety”] # Cấu hình giao diện Hugo Book Theme bookToC: true # Bật Mục lục tự động bên phải bài viết bookSearchExclude: false # Cho phép thanh tìm kiếm quét bài viết này — ## 1. Đặt vấn đề: Rủi ro An toàn &amp; Tính toàn vẹn SOPs tại nhà máy Trong vận hành bảo trì nhà máy công nghiệp, sự cố cách ly năng lượng nguy hiểm (Lockout/Tagout - LOTO) là một trong những nguyên nhân hàng đầu gây chấn thương nghiêm trọng hoặc tử vong cho kỹ thuật viên [4]. Các hạn chế cố hữu của hệ thống quy trình an toàn (SOPs) truyền thống bao gồm: - **Rủi ro sai lệch phiên bản (Tampering Risk)**: Tài liệu in giấy hoặc file Word/Excel tĩnh dễ bị chỉnh sửa thông số thực địa mà không lưu lại dấu vết xác thực [4, 5]. - **Bất đồng ngôn ngữ thực địa (Bilingual Barrier)**: Thiếu sự nhất quán giữa thuật ngữ kỹ thuật Tiếng Anh chuẩn quốc tế và thao tác Tiếng Việt của kỹ thuật viên ca vận hành. - **Thiếu cơ chế xác minh tức thì (Zero-Trust Gap)**: Nhân sự an toàn (EHS) không có phương thức số hóa để đối soát nhanh tính toàn vẹn của quy trình trước khi ký duyệt cấp phép làm việc (Work Permit). — ## 2. Giải pháp Kiến trúc: SHA-256 Verified LOTO SOPs Kit Bộ quy trình LOTO SOPs Kit được thiết kế dưới dạng cấu trúc dữ liệu mô hình hóa (JSON Payload), tích hợp thuật toán mã hóa mật mã học **Cryptographic SHA-256** nhằm đạt được hai mục tiêu lõi [1, 4]: 1. **Zero-Tampering Verification**: Mỗi quy trình LOTO phát hành được gắn liền với một mã băm 64 ký tự hex độc bản. Bất kỳ sự thay đổi trái phép nào trên nội dung thao tác (dù chỉ 1 ký tự hay 1 khoảng trắng) sẽ làm thay đổi toàn bộ mã băm, tự động kích hoạt cảnh báo quy trình không hợp lệ [1, 4]. 2. **OSHA 29 CFR 1910.147 Compliance**: Đóng gói sẵn cấu trúc các nguồn năng lượng nguy hiểm (Electrical, Mechanical, Hydraulic, Pneumatic, Thermal) và bước kiểm tra trạng thái năng lượng bằng zero (Zero Energy State Verification) [1, 4]. — ## 3. Script Python Xác thực Tính toàn vẹn SOP Payload Đoạn script Python dưới đây minh họa cách tự động hóa mã hóa và kiểm tra tính toàn vẹn của một JSON Payload LOTO SOPs trước khi đẩy dữ liệu vào hệ thống quản lý bảo trì (CMMS) [1, 6]: ```python import hashlib import json def generate_loto_sha256(sop_payload: dict) -&gt; str: &#34;&#34;&#34; Tạo mã băm Cryptographic SHA-256 cho quy trình LOTO SOPs Payload. Đảm bảo tính duy nhất và chống biến đổi dữ liệu (Zero-Tampering). &#34;&#34;&#34; # Chuẩn hóa chuỗi JSON (sắp xếp key và định dạng mã hóa UTF-8) serialized_data = json.dumps(sop_payload, sort_keys=True, ensure_ascii=False) # Tính toán mã băm SHA-256 sha256_hash = hashlib.sha256(serialized_data.encode(‘utf-8’)).hexdigest() return sha256_hash # Dynamic Payload Mẫu: Quy trình LOTO cho Máy bơm ly tâm BĐS/Thực địa FAC_GLOBAL_01 / PUMP-201A loto_sample_payload = { “sop_id”: “LOTO-PUMP-201A-V1”, “standard_reference”: “OSHA 29 CFR 1910.147”, “asset_id”: “FAC_GLOBAL_01_PUMP_201A”, “isolation_steps”: [ { “step_number”: 1, “energy_type”: “Electrical (380V AC)”, “isolation_point”: “MCC-01 Feeder Breaker CB-12”, “action_en”: “Switch OFF MCC-01 CB-12 and apply Hasp/Padlock with Danger Tag.”, “action_vi”: “Ngắt CB-12 tại tủ MCC-01, khóa Càng khóa/Ổ khóa và treo Thẻ Cảnh báo.”, “zero_energy_verification”: “Measure 3-phase voltage with calibrated Multimeter (0V AC).” }, { “step_number”: 2, “energy_type”: “Hydraulic / Fluid Pressure”, “isolation_point”: “Suction Valve V-101 &amp; Discharge Valve V-102”, “action_en”: “Close Valve V-101 and V-102, apply Cable Lockout.”, “action_vi”: “Đóng van xả V-101 và V-102, xả áp suất dư và khóa cáp LOTO.”, “zero_energy_verification”: “Inspect Pressure Gauge PG-201 reading exactly 0 Bar.” } ] } # Thực thi tạo mã băm xác thực calculated_hash = generate_loto_sha256(loto_sample_payload) print(f&#34;=== LOTO SOPs SHA-256 VERIFICATION ===&#34;) print(f&#34;SOP ID: {loto_sample_payload[‘sop_id’]}&#34;) print(f&#34;Asset ID: {loto_sample_payload[‘asset_id’]}&#34;) print(f&#34;Cryptographic SHA-256 Hash: {calculated_hash}&#34;)">
+	<meta property="og:title" content="Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA &amp; Mã hóa SHA-256">
+	<meta property="og:description" content="Giải pháp số hóa và chuẩn hóa quy trình an toàn cách ly năng lượng nguy hiểm (LOTO) chuẩn OSHA 29 CFR 1910.147 kết hợp mã băm bảo mật SHA-256 chống giả mạo dữ liệu thực địa.">
 	<meta property="og:locale" content="vi_vn">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-11-06T00:00:00+07:00">
+		<meta property="article:modified_time" content="2026-11-06T00:00:00+07:00">
+		<meta property="article:tag" content="OT Safety">
+		<meta property="article:tag" content="LOTO">
+		<meta property="article:tag" content="OSHA 1910.147">
+		<meta property="article:tag" content="SHA-256">
+		<meta property="article:tag" content="SOP Automation">
 
 
-	<meta itemprop="name" content="Nguyễn Trí Dũng | Industrial OT &amp; Asset Management">
-	<meta itemprop="description" content="-– title: “Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA 29 CFR 1910.147 nhúng mã băm Cryptographic SHA-256” date: 2026-11-06T00:00:00&#43;07:00 draft: false description: “Giải pháp chuẩn hóa quy trình an toàn cách ly năng lượng nguy hiểm (LOTO) song ngữ Anh - Việt kết hợp xác thực tính toàn vẹn dữ liệu bằng Cryptographic SHA-256.” tags: [“OT Safety”, “LOTO”, “OSHA 1910.147”, “SHA-256”, “SOP Automation”, “Async-First”] categories: [“Industrial OT Safety”] # Cấu hình giao diện Hugo Book Theme bookToC: true # Bật Mục lục tự động bên phải bài viết bookSearchExclude: false # Cho phép thanh tìm kiếm quét bài viết này — ## 1. Đặt vấn đề: Rủi ro An toàn &amp; Tính toàn vẹn SOPs tại nhà máy Trong vận hành bảo trì nhà máy công nghiệp, sự cố cách ly năng lượng nguy hiểm (Lockout/Tagout - LOTO) là một trong những nguyên nhân hàng đầu gây chấn thương nghiêm trọng hoặc tử vong cho kỹ thuật viên [4]. Các hạn chế cố hữu của hệ thống quy trình an toàn (SOPs) truyền thống bao gồm: - **Rủi ro sai lệch phiên bản (Tampering Risk)**: Tài liệu in giấy hoặc file Word/Excel tĩnh dễ bị chỉnh sửa thông số thực địa mà không lưu lại dấu vết xác thực [4, 5]. - **Bất đồng ngôn ngữ thực địa (Bilingual Barrier)**: Thiếu sự nhất quán giữa thuật ngữ kỹ thuật Tiếng Anh chuẩn quốc tế và thao tác Tiếng Việt của kỹ thuật viên ca vận hành. - **Thiếu cơ chế xác minh tức thì (Zero-Trust Gap)**: Nhân sự an toàn (EHS) không có phương thức số hóa để đối soát nhanh tính toàn vẹn của quy trình trước khi ký duyệt cấp phép làm việc (Work Permit). — ## 2. Giải pháp Kiến trúc: SHA-256 Verified LOTO SOPs Kit Bộ quy trình LOTO SOPs Kit được thiết kế dưới dạng cấu trúc dữ liệu mô hình hóa (JSON Payload), tích hợp thuật toán mã hóa mật mã học **Cryptographic SHA-256** nhằm đạt được hai mục tiêu lõi [1, 4]: 1. **Zero-Tampering Verification**: Mỗi quy trình LOTO phát hành được gắn liền với một mã băm 64 ký tự hex độc bản. Bất kỳ sự thay đổi trái phép nào trên nội dung thao tác (dù chỉ 1 ký tự hay 1 khoảng trắng) sẽ làm thay đổi toàn bộ mã băm, tự động kích hoạt cảnh báo quy trình không hợp lệ [1, 4]. 2. **OSHA 29 CFR 1910.147 Compliance**: Đóng gói sẵn cấu trúc các nguồn năng lượng nguy hiểm (Electrical, Mechanical, Hydraulic, Pneumatic, Thermal) và bước kiểm tra trạng thái năng lượng bằng zero (Zero Energy State Verification) [1, 4]. — ## 3. Script Python Xác thực Tính toàn vẹn SOP Payload Đoạn script Python dưới đây minh họa cách tự động hóa mã hóa và kiểm tra tính toàn vẹn của một JSON Payload LOTO SOPs trước khi đẩy dữ liệu vào hệ thống quản lý bảo trì (CMMS) [1, 6]: ```python import hashlib import json def generate_loto_sha256(sop_payload: dict) -&gt; str: &#34;&#34;&#34; Tạo mã băm Cryptographic SHA-256 cho quy trình LOTO SOPs Payload. Đảm bảo tính duy nhất và chống biến đổi dữ liệu (Zero-Tampering). &#34;&#34;&#34; # Chuẩn hóa chuỗi JSON (sắp xếp key và định dạng mã hóa UTF-8) serialized_data = json.dumps(sop_payload, sort_keys=True, ensure_ascii=False) # Tính toán mã băm SHA-256 sha256_hash = hashlib.sha256(serialized_data.encode(‘utf-8’)).hexdigest() return sha256_hash # Dynamic Payload Mẫu: Quy trình LOTO cho Máy bơm ly tâm BĐS/Thực địa FAC_GLOBAL_01 / PUMP-201A loto_sample_payload = { “sop_id”: “LOTO-PUMP-201A-V1”, “standard_reference”: “OSHA 29 CFR 1910.147”, “asset_id”: “FAC_GLOBAL_01_PUMP_201A”, “isolation_steps”: [ { “step_number”: 1, “energy_type”: “Electrical (380V AC)”, “isolation_point”: “MCC-01 Feeder Breaker CB-12”, “action_en”: “Switch OFF MCC-01 CB-12 and apply Hasp/Padlock with Danger Tag.”, “action_vi”: “Ngắt CB-12 tại tủ MCC-01, khóa Càng khóa/Ổ khóa và treo Thẻ Cảnh báo.”, “zero_energy_verification”: “Measure 3-phase voltage with calibrated Multimeter (0V AC).” }, { “step_number”: 2, “energy_type”: “Hydraulic / Fluid Pressure”, “isolation_point”: “Suction Valve V-101 &amp; Discharge Valve V-102”, “action_en”: “Close Valve V-101 and V-102, apply Cable Lockout.”, “action_vi”: “Đóng van xả V-101 và V-102, xả áp suất dư và khóa cáp LOTO.”, “zero_energy_verification”: “Inspect Pressure Gauge PG-201 reading exactly 0 Bar.” } ] } # Thực thi tạo mã băm xác thực calculated_hash = generate_loto_sha256(loto_sample_payload) print(f&#34;=== LOTO SOPs SHA-256 VERIFICATION ===&#34;) print(f&#34;SOP ID: {loto_sample_payload[‘sop_id’]}&#34;) print(f&#34;Asset ID: {loto_sample_payload[‘asset_id’]}&#34;) print(f&#34;Cryptographic SHA-256 Hash: {calculated_hash}&#34;)">
-	<meta itemprop="wordCount" content="718">
+	<meta itemprop="name" content="Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA &amp; Mã hóa SHA-256">
+	<meta itemprop="description" content="Giải pháp số hóa và chuẩn hóa quy trình an toàn cách ly năng lượng nguy hiểm (LOTO) chuẩn OSHA 29 CFR 1910.147 kết hợp mã băm bảo mật SHA-256 chống giả mạo dữ liệu thực địa.">
+	<meta itemprop="datePublished" content="2026-11-06T00:00:00+07:00">
+	<meta itemprop="dateModified" content="2026-11-06T00:00:00+07:00">
+	<meta itemprop="wordCount" content="782">
+	<meta itemprop="keywords" content="OT Safety,LOTO,OSHA 1910.147,SHA-256,SOP Automation">
 
-<title>Loto Sop Sha256 • Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</title>
+<title>Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA &amp; Mã hóa SHA-256 • Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</title>
 <link rel="icon" href="/ot-tech-blog/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/ot-tech-blog/favicon.png" sizes="any">
 <link rel="apple-touch-icon" href="/ot-tech-blog/apple-touch-icon.png">
@@ -40,7 +49,7 @@
 <link rel="stylesheet" href="/ot-tech-blog/book.min.3b47c5c3053ddd1846b44ca0278f9365d1cc6def0c56efaee4fbb8b7a57c782b.css" integrity="sha256-O0fFwwU93RhGtEygJ4&#43;TZdHMbe8MVu&#43;u5Pu4t6V8eCs=" crossorigin="anonymous">
 
 
-<script type="module" src="/ot-tech-blog/en.search.min.4310a70c2ec5409b40d53f7d0ad3f8a03f0bc19f5e0067423449abf4531fbe13.js" integrity="sha256-QxCnDC7FQJtA1T99CtP4oD8LwZ9eAGdCNEmr9FMfvhM=" crossorigin="anonymous"></script>
+<script type="module" src="/ot-tech-blog/en.search.min.e9f6ca33738a491b9c98d28c9a0fc93828a6344565c21f4f6fc97f318248904f.js" integrity="sha256-6fbKM3OKSRucmNKMmg/JOCimNEVlwh9Pb8l/MYJIkE8=" crossorigin="anonymous"></script>
   
 </head>
 
@@ -100,6 +109,22 @@
   
 
   
+    <a href="/ot-tech-blog/posts/loto-sop-sha256/" class="active">
+      Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA &amp; Mã hóa SHA-256</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/ot-tech-blog/posts/opl-02-sql-oee-calculation/" class="">
       OPL #02: Viết câu lệnh SQL tính hiệu suất thiết bị tổng thể (OEE) theo ca từ dữ liệu PLC</a>
   
@@ -116,20 +141,6 @@
   
     <a href="/ot-tech-blog/posts/opl-grafana-postgresql/" class="">
       OPL #01: Cấu hình Grafana Control Room Dashboard kết nối PostgreSQL Query Time-Series</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/ot-tech-blog/posts/loto-sop-sha256/" class="active">
-      Loto Sop Sha256</a>
   
 
         </li>
@@ -218,18 +229,129 @@
       
 <article class="markdown book-post">
   <h1>
-    Loto Sop Sha256
+    Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA &amp; Mã hóa SHA-256
   </h1>
   
+  <a class="flex align-center text-small book-post-date">
+    <svg class="book-icon" aria-hidden="true"><use href="/ot-tech-blog/iconset.min.90a7fd302dc1b9bc3c291688faee66a3e60a9209f59b89fa00669e35d6907b3f.svg#calendar"></use></svg>
+    <span>tháng 11 6, 2026</span>
+  </a>
+
 
 
   
+  <div class="text-small">
+    
+      <a href="/ot-tech-blog/categories/industrial-ot-safety/">Industrial OT Safety</a>
+  </div>
+  
 
+  
+  <div class="text-small">
+    
+      <a href="/ot-tech-blog/tags/ot-safety/">OT Safety</a>, 
+      <a href="/ot-tech-blog/tags/loto/">LOTO</a>, 
+      <a href="/ot-tech-blog/tags/osha-1910.147/">OSHA 1910.147</a>, 
+      <a href="/ot-tech-blog/tags/sha-256/">SHA-256</a>, 
+      <a href="/ot-tech-blog/tags/sop-automation/">SOP Automation</a>
+  </div>
   
 
 
-  <div class="book-post-content markdown-inner"><p>-&ndash; title: &ldquo;Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA 29 CFR 1910.147 nhúng mã băm Cryptographic SHA-256&rdquo; date: 2026-11-06T00:00:00+07:00 draft: false description: &ldquo;Giải pháp chuẩn hóa quy trình an toàn cách ly năng lượng nguy hiểm (LOTO) song ngữ Anh - Việt kết hợp xác thực tính toàn vẹn dữ liệu bằng Cryptographic SHA-256.&rdquo; tags: [&ldquo;OT Safety&rdquo;, &ldquo;LOTO&rdquo;, &ldquo;OSHA 1910.147&rdquo;, &ldquo;SHA-256&rdquo;, &ldquo;SOP Automation&rdquo;, &ldquo;Async-First&rdquo;] categories: [&ldquo;Industrial OT Safety&rdquo;] # Cấu hình giao diện Hugo Book Theme bookToC: true # Bật Mục lục tự động bên phải bài viết bookSearchExclude: false # Cho phép thanh tìm kiếm quét bài viết này &mdash; ## 1. Đặt vấn đề: Rủi ro An toàn &amp; Tính toàn vẹn SOPs tại nhà máy Trong vận hành bảo trì nhà máy công nghiệp, sự cố cách ly năng lượng nguy hiểm (Lockout/Tagout - LOTO) là một trong những nguyên nhân hàng đầu gây chấn thương nghiêm trọng hoặc tử vong cho kỹ thuật viên [4]. Các hạn chế cố hữu của hệ thống quy trình an toàn (SOPs) truyền thống bao gồm: - **Rủi ro sai lệch phiên bản (Tampering Risk)**: Tài liệu in giấy hoặc file Word/Excel tĩnh dễ bị chỉnh sửa thông số thực địa mà không lưu lại dấu vết xác thực [4, 5]. - **Bất đồng ngôn ngữ thực địa (Bilingual Barrier)**: Thiếu sự nhất quán giữa thuật ngữ kỹ thuật Tiếng Anh chuẩn quốc tế và thao tác Tiếng Việt của kỹ thuật viên ca vận hành. - **Thiếu cơ chế xác minh tức thì (Zero-Trust Gap)**: Nhân sự an toàn (EHS) không có phương thức số hóa để đối soát nhanh tính toàn vẹn của quy trình trước khi ký duyệt cấp phép làm việc (Work Permit). &mdash; ## 2. Giải pháp Kiến trúc: SHA-256 Verified LOTO SOPs Kit Bộ quy trình LOTO SOPs Kit được thiết kế dưới dạng cấu trúc dữ liệu mô hình hóa (JSON Payload), tích hợp thuật toán mã hóa mật mã học **Cryptographic SHA-256** nhằm đạt được hai mục tiêu lõi [1, 4]: 1. **Zero-Tampering Verification**: Mỗi quy trình LOTO phát hành được gắn liền với một mã băm 64 ký tự hex độc bản. Bất kỳ sự thay đổi trái phép nào trên nội dung thao tác (dù chỉ 1 ký tự hay 1 khoảng trắng) sẽ làm thay đổi toàn bộ mã băm, tự động kích hoạt cảnh báo quy trình không hợp lệ [1, 4]. 2. **OSHA 29 CFR 1910.147 Compliance**: Đóng gói sẵn cấu trúc các nguồn năng lượng nguy hiểm (Electrical, Mechanical, Hydraulic, Pneumatic, Thermal) và bước kiểm tra trạng thái năng lượng bằng zero (Zero Energy State Verification) [1, 4]. &mdash; ## 3. Script Python Xác thực Tính toàn vẹn SOP Payload Đoạn script Python dưới đây minh họa cách tự động hóa mã hóa và kiểm tra tính toàn vẹn của một JSON Payload LOTO SOPs trước khi đẩy dữ liệu vào hệ thống quản lý bảo trì (CMMS) [1, 6]: ```python import hashlib import json def generate_loto_sha256(sop_payload: dict) -&gt; str: &quot;&quot;&quot; Tạo mã băm Cryptographic SHA-256 cho quy trình LOTO SOPs Payload. Đảm bảo tính duy nhất và chống biến đổi dữ liệu (Zero-Tampering). &quot;&quot;&quot; # Chuẩn hóa chuỗi JSON (sắp xếp key và định dạng mã hóa UTF-8) serialized_data = json.dumps(sop_payload, sort_keys=True, ensure_ascii=False) # Tính toán mã băm SHA-256 sha256_hash = hashlib.sha256(serialized_data.encode(&lsquo;utf-8&rsquo;)).hexdigest() return sha256_hash # Dynamic Payload Mẫu: Quy trình LOTO cho Máy bơm ly tâm BĐS/Thực địa FAC_GLOBAL_01 / PUMP-201A loto_sample_payload = { &ldquo;sop_id&rdquo;: &ldquo;LOTO-PUMP-201A-V1&rdquo;, &ldquo;standard_reference&rdquo;: &ldquo;OSHA 29 CFR 1910.147&rdquo;, &ldquo;asset_id&rdquo;: &ldquo;FAC_GLOBAL_01_PUMP_201A&rdquo;, &ldquo;isolation_steps&rdquo;: [ { &ldquo;step_number&rdquo;: 1, &ldquo;energy_type&rdquo;: &ldquo;Electrical (380V AC)&rdquo;, &ldquo;isolation_point&rdquo;: &ldquo;MCC-01 Feeder Breaker CB-12&rdquo;, &ldquo;action_en&rdquo;: &ldquo;Switch OFF MCC-01 CB-12 and apply Hasp/Padlock with Danger Tag.&rdquo;, &ldquo;action_vi&rdquo;: &ldquo;Ngắt CB-12 tại tủ MCC-01, khóa Càng khóa/Ổ khóa và treo Thẻ Cảnh báo.&rdquo;, &ldquo;zero_energy_verification&rdquo;: &ldquo;Measure 3-phase voltage with calibrated Multimeter (0V AC).&rdquo; }, { &ldquo;step_number&rdquo;: 2, &ldquo;energy_type&rdquo;: &ldquo;Hydraulic / Fluid Pressure&rdquo;, &ldquo;isolation_point&rdquo;: &ldquo;Suction Valve V-101 &amp; Discharge Valve V-102&rdquo;, &ldquo;action_en&rdquo;: &ldquo;Close Valve V-101 and V-102, apply Cable Lockout.&rdquo;, &ldquo;action_vi&rdquo;: &ldquo;Đóng van xả V-101 và V-102, xả áp suất dư và khóa cáp LOTO.&rdquo;, &ldquo;zero_energy_verification&rdquo;: &ldquo;Inspect Pressure Gauge PG-201 reading exactly 0 Bar.&rdquo; } ] } # Thực thi tạo mã băm xác thực calculated_hash = generate_loto_sha256(loto_sample_payload) print(f&quot;=== LOTO SOPs SHA-256 VERIFICATION ===&quot;) print(f&quot;SOP ID: {loto_sample_payload[&lsquo;sop_id&rsquo;]}&quot;) print(f&quot;Asset ID: {loto_sample_payload[&lsquo;asset_id&rsquo;]}&quot;) print(f&quot;Cryptographic SHA-256 Hash: {calculated_hash}&quot;)</p>
-</div>
+  <div class="book-post-content markdown-inner"><h2 id="1-bài-toán-thực-địa-lỗ-hổng-quy-trình-loto-truyền-thống">1. Bài toán thực địa: Lỗ hổng quy trình LOTO truyền thống<a class="anchor" href="#1-b%c3%a0i-to%c3%a1n-th%e1%bb%b1c-%c4%91%e1%bb%8ba-l%e1%bb%97-h%e1%bb%95ng-quy-tr%c3%acnh-loto-truy%e1%bb%81n-th%e1%bb%91ng" aria-label="Link"></a></h2>
+<p>Trong vận hành và bảo trì nhà máy công nghiệp, sự cố liên quan đến <strong>Cách ly năng lượng nguy hiểm (Lockout/Tagout - LOTO)</strong> luôn nằm trong nhóm nguyên nhân hàng đầu dẫn đến tai nạn nghiêm trọng. Hệ thống quy trình vận hành tiêu chuẩn (SOPs) dạng giấy hoặc file tĩnh hiện nay đang bộc lộ 3 lỗ hổng lớn:</p>
+<ul>
+<li><strong>Rủi ro sai lệch phiên bản (Tampering Risk):</strong> File Word/Excel lưu cục bộ hoặc bản in giấy rất dễ bị sửa đổi thông số kỹ thuật thực địa một cách tùy tiện mà không để lại lịch sử vết (Audit Trail).</li>
+<li><strong>Rào cản ngôn ngữ thực tế (Bilingual Barrier):</strong> Sự đứt gãy thông tin giữa thuật ngữ kỹ thuật Tiếng Anh hệ thống và thao tác Tiếng Việt của kỹ thuật viên trực ca dẫn đến hiểu sai bước thực hiện.</li>
+<li><strong>Lỗ hổng Zero-Trust (Bất đối xứng thông tin):</strong> Kỹ sư an toàn (EHS) hoặc người cấp phép (Issuer) không có công cụ số hóa để đối soát tức thì tính toàn vẹn của quy trình trước khi ký lệnh cho phép làm việc (Work Permit).</li>
+</ul>
+<hr>
+<h2 id="2-giải-pháp-kiến-trúc-sha-256-verified-loto-sops-kit">2. Giải pháp Kiến trúc: SHA-256 Verified LOTO SOPs Kit<a class="anchor" href="#2-gi%e1%ba%a3i-ph%c3%a1p-ki%e1%ba%bfn-tr%c3%bac-sha-256-verified-loto-sops-kit" aria-label="Link"></a></h2>
+<p>Giải pháp số hóa chuyển đổi toàn bộ cấu trúc quy trình LOTO thành một <strong>JSON Payload (Cấu trúc dữ liệu mô hình hóa)</strong>, đồng thời nhúng thuật toán mật mã học <strong>Cryptographic SHA-256</strong> nhằm giải quyết triệt để bài toán an toàn và bảo mật:</p>
+<ul>
+<li>🔒 <strong>Zero-Tampering Verification (Chống giả mạo tuyệt đối):</strong> Mỗi quy trình LOTO xuất bản sẽ đi kèm một mã băm 64 ký tự hex duy nhất. Bất kỳ một chỉnh sửa trái phép nào (dù chỉ là một dấu cách hay một chữ số thay đổi tại thực địa) sẽ làm biến đổi hoàn toàn mã băm, lập tức kích hoạt cảnh báo vô hiệu hóa quy trình trên hệ thống.</li>
+<li>🛡️ <strong>OSHA 29 CFR 1910.147 Compliance (Chuẩn hóa An toàn):</strong> Định khuôn sẵn toàn bộ cấu trúc các nguồn năng lượng nguy hiểm (<em>Electrical, Mechanical, Hydraulic, Pneumatic, Thermal</em>) và ép buộc kiểm tra trạng thái năng lượng bằng không (<em>Zero Energy State Verification</em>).</li>
+</ul>
+<h3 id="bảng-trực-quan-hóa-cấu-trúc-dữ-liệu-loto-sops-thực-địa">Bảng trực quan hóa cấu trúc dữ liệu LOTO SOPs thực địa:<a class="anchor" href="#b%e1%ba%a3ng-tr%e1%bb%b1c-quan-h%c3%b3a-c%e1%ba%a5u-tr%c3%bac-d%e1%bb%af-li%e1%bb%87u-loto-sops-th%e1%bb%b1c-%c4%91%e1%bb%8ba" aria-label="Link"></a></h3>
+<p><em>(Ví dụ cho thiết bị: Máy bơm ly tâm <code>PUMP-201A</code> tại khu vực <code>FAC_GLOBAL_01</code>)</em></p>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left">Bước</th>
+					<th style="text-align: left">Điểm Cách Ly (Isolation Point)</th>
+					<th style="text-align: left">Thao Tác Tiếng Anh (Action EN)</th>
+					<th style="text-align: left">Thao Tác Tiếng Việt (Action VI)</th>
+					<th style="text-align: left">Kiểm Tra Áp Suất/Năng Lượng (Zero Energy Verification)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left"><strong>01</strong></td>
+					<td style="text-align: left"><strong>MCC-01</strong> Feeder Breaker CB-12</td>
+					<td style="text-align: left">Switch OFF MCC-01 CB-12 and apply Hasp/Padlock with Danger Tag.</td>
+					<td style="text-align: left">Ngắt CB-12 tại tủ MCC-01, khóa Càng khóa/Ổ khóa và treo Thẻ Cảnh báo.</td>
+					<td style="text-align: left">Measure 3-phase voltage with calibrated Multimeter (<strong>0V AC</strong>).</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>02</strong></td>
+					<td style="text-align: left">Suction Valve <strong>V-101</strong> &amp; Discharge Valve <strong>V-102</strong></td>
+					<td style="text-align: left">Close Valve V-101 and V-102, apply Cable Lockout.</td>
+					<td style="text-align: left">Đóng van xả V-101 và V-102, xả áp suất dư và khóa cáp LOTO.</td>
+					<td style="text-align: left">Inspect Pressure Gauge PG-201 reading exactly <strong>0 Bar</strong>.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="3-tự-động-hóa-xác-thực-với-script-python">3. Tự động hóa xác thực với Script Python<a class="anchor" href="#3-t%e1%bb%b1-%c4%91%e1%bb%99ng-h%c3%b3a-x%c3%a1c-th%e1%bb%b1c-v%e1%bb%9bi-script-python" aria-label="Link"></a></h2>
+<p>Đoạn script dưới đây được sử dụng để tự động hóa việc tính toán, mã hóa và kiểm tra tính toàn vẹn của dữ liệu LOTO SOPs Payload trước khi đồng bộ dữ liệu vào hệ thống quản lý bảo trì máy móc (<strong>CMMS/EAM</strong>).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_loto_sha256</span>(sop_payload: dict) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Tạo mã băm Cryptographic SHA-256 độc bản cho cấu trúc JSON LOTO SOPs.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Cơ chế bảo mật Zero-Tampering ngăn chặn mọi hành vi thay đổi dữ liệu thực địa.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Chuẩn hóa chuỗi dữ liệu JSON (Sắp xếp cố định Key và định dạng UTF-8)</span>
+</span></span><span style="display:flex;"><span>    serialized_data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps(sop_payload, sort_keys<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, ensure_ascii<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Mã hóa dữ liệu sang SHA-256 Hex</span>
+</span></span><span style="display:flex;"><span>    sha256_hash <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256(serialized_data<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sha256_hash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ----------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DYNAMIC DATA PAYLOAD MẪU (Dữ liệu đầu vào hệ thống)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ----------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>loto_sample_payload <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sop_id&#34;</span>: <span style="color:#e6db74">&#34;LOTO-PUMP-201A-V1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;standard_reference&#34;</span>: <span style="color:#e6db74">&#34;OSHA 29 CFR 1910.147&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;asset_id&#34;</span>: <span style="color:#e6db74">&#34;FAC_GLOBAL_01_PUMP_201A&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;isolation_steps&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;step_number&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;energy_type&#34;</span>: <span style="color:#e6db74">&#34;Electrical (380V AC)&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;isolation_point&#34;</span>: <span style="color:#e6db74">&#34;MCC-01 Feeder Breaker CB-12&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;action_en&#34;</span>: <span style="color:#e6db74">&#34;Switch OFF MCC-01 CB-12 and apply Hasp/Padlock with Danger Tag.&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;action_vi&#34;</span>: <span style="color:#e6db74">&#34;Ngắt CB-12 tại tủ MCC-01, khóa Càng khóa/Ổ khóa và treo Thẻ Cảnh báo.&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;zero_energy_verification&#34;</span>: <span style="color:#e6db74">&#34;Measure 3-phase voltage with calibrated Multimeter (0V AC).&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;step_number&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;energy_type&#34;</span>: <span style="color:#e6db74">&#34;Hydraulic / Fluid Pressure&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;isolation_point&#34;</span>: <span style="color:#e6db74">&#34;Suction Valve V-101 &amp; Discharge Valve V-102&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;action_en&#34;</span>: <span style="color:#e6db74">&#34;Close Valve V-101 and V-102, apply Cable Lockout.&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;action_vi&#34;</span>: <span style="color:#e6db74">&#34;Đóng van xả V-101 và V-102, xả áp suất dư và khóa cáp LOTO.&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;zero_energy_verification&#34;</span>: <span style="color:#e6db74">&#34;Inspect Pressure Gauge PG-201 reading exactly 0 Bar.&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Thực thi chương trình và xuất kết quả đối soát</span>
+</span></span><span style="display:flex;"><span>calculated_hash <span style="color:#f92672">=</span> generate_loto_sha256(loto_sample_payload)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;=== LOTO SOPs SHA-256 VERIFICATION ===&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;SOP ID: </span><span style="color:#e6db74">{</span>loto_sample_payload[<span style="color:#e6db74">&#39;sop_id&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Asset ID: </span><span style="color:#e6db74">{</span>loto_sample_payload[<span style="color:#e6db74">&#39;asset_id&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Cryptographic SHA-256 Hash: </span><span style="color:#e6db74">{</span>calculated_hash<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)</span></span></code></pre></div></div>
 </article>
  
       
@@ -239,13 +361,18 @@
   <div class="flex flex-wrap justify-between">
   <div>
   
-    <a href="/ot-tech-blog/posts/opl-grafana-postgresql/" class="flex align-center">
+    <a href="/ot-tech-blog/posts/opl-hugo-yaml-metadata/" class="flex align-center">
       <svg class="book-icon" aria-hidden="true"><use href="/ot-tech-blog/iconset.min.90a7fd302dc1b9bc3c291688faee66a3e60a9209f59b89fa00669e35d6907b3f.svg#backward"></use></svg>
-      <span>OPL #01: Cấu hình Grafana Control Room Dashboard kết nối PostgreSQL Query Time-Series</span>
+      <span>Cấu hình Front Matter YAML &amp; SEO Metadata chuẩn Hugo Book Theme</span>
     </a>
   
   </div>
   <div>
+  
+    <a href="/ot-tech-blog/posts/opl-python-loto-sha256/" class="flex align-center">
+      <span>Opl Python Loto Sha256</span>
+      <svg class="book-icon" aria-hidden="true"><use href="/ot-tech-blog/iconset.min.90a7fd302dc1b9bc3c291688faee66a3e60a9209f59b89fa00669e35d6907b3f.svg#forward"></use></svg>
+    </a>
   
   </div>
 </div>
@@ -274,7 +401,17 @@
     <div class="book-toc-content">
       
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-bài-toán-thực-địa-lỗ-hổng-quy-trình-loto-truyền-thống">1. Bài toán thực địa: Lỗ hổng quy trình LOTO truyền thống</a></li>
+    <li><a href="#2-giải-pháp-kiến-trúc-sha-256-verified-loto-sops-kit">2. Giải pháp Kiến trúc: SHA-256 Verified LOTO SOPs Kit</a>
+      <ul>
+        <li><a href="#bảng-trực-quan-hóa-cấu-trúc-dữ-liệu-loto-sops-thực-địa">Bảng trực quan hóa cấu trúc dữ liệu LOTO SOPs thực địa:</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-tự-động-hóa-xác-thực-với-script-python">3. Tự động hóa xác thực với Script Python</a></li>
+  </ul>
+</nav>
 
 
 

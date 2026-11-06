@@ -27,5 +27,12 @@
 				<guid>http://localhost:1313/ot-tech-blog/categories/t%E1%BB%91i-%C6%B0u-h%C3%B3a-seo/</guid>
 				<description></description>
 			</item>
+			<item>
+				<title>Industrial OT Safety</title>
+				<link>http://localhost:1313/ot-tech-blog/categories/industrial-ot-safety/</link>
+				<pubDate>Fri, 06 Nov 2026 00:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/categories/industrial-ot-safety/</guid>
+				<description></description>
+			</item>
 	</channel>
 </rss>

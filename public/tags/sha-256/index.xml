@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>SHA-256 on Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</title>
+		<link>http://localhost:1313/ot-tech-blog/tags/sha-256/</link>
+		<description>Recent content in SHA-256 on Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</description>
+		<generator>Hugo</generator>
+		<language>vi-vn</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 06 Nov 2026 00:00:00 +0700</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/ot-tech-blog/tags/sha-256/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA &amp; Mã hóa SHA-256</title>
+				<link>http://localhost:1313/ot-tech-blog/posts/loto-sop-sha256/</link>
+				<pubDate>Fri, 06 Nov 2026 00:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/posts/loto-sop-sha256/</guid>
+				<description>&lt;h2 id=&#34;1-bài-toán-thực-địa-lỗ-hổng-quy-trình-loto-truyền-thống&#34;&gt;1. Bài toán thực địa: Lỗ hổng quy trình LOTO truyền thống&lt;a class=&#34;anchor&#34; href=&#34;#1-b%c3%a0i-to%c3%a1n-th%e1%bb%b1c-%c4%91%e1%bb%8ba-l%e1%bb%97-h%e1%bb%95ng-quy-tr%c3%acnh-loto-truy%e1%bb%81n-th%e1%bb%91ng&#34; aria-label=&#34;Link&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Trong vận hành và bảo trì nhà máy công nghiệp, sự cố liên quan đến &lt;strong&gt;Cách ly năng lượng nguy hiểm (Lockout/Tagout - LOTO)&lt;/strong&gt; luôn nằm trong nhóm nguyên nhân hàng đầu dẫn đến tai nạn nghiêm trọng. Hệ thống quy trình vận hành tiêu chuẩn (SOPs) dạng giấy hoặc file tĩnh hiện nay đang bộc lộ 3 lỗ hổng lớn:&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
