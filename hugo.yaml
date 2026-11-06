@@ -1,0 +1,25 @@
+baseURL: "https://github.io"
+locale: "vi-vn"
+title: "Nguyễn Trí Dũng | Industrial OT & Asset Management"
+theme: "hugo-book"
+
+params: 
+  BookTheme: "auto"
+  BookSearch: true
+  BookToC: true
+  BookSection: "*"
+
+# Cấu hình Thanh điều hướng (Menu bên trái) 
+menu:
+  after:
+    - name: "📌 Giới thiệu (About Me)"
+      url: "/about/"
+      weight: 10
+    - name: "📚 Bài viết Kỹ thuật (Posts)"
+      url: "/posts/"
+      weight: 20
+
+markup: 
+  goldmark: 
+    renderer: 
+      unsafe: true
