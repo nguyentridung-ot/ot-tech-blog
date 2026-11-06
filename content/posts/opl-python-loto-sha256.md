@@ -1,7 +1,7 @@
 ---
 # --- CẤU HÌNH HIỂN THỊ (HUGO BOOK THEME) ---
 title: "OPL #02: Python Script xác thực SHA-256 Hash cho LOTO JSON Payload"
-date: 2026-11-07T00:00:00+07:00
+date: 2026-11-06T17:00:00+07:00
 draft: false
 bookToC: true               # Bật Mục lục tự động bên phải bài viết
 bookSearchExclude: false    # Cho phép thanh tìm kiếm nội bộ quét bài viết này
