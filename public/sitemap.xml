@@ -2,12 +2,53 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/about/</loc>
+    <loc>http://localhost:1313/ot-tech-blog/</loc>
+    <lastmod>2026-11-06T16:42:22+07:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>http://localhost:1313/ot-tech-blog/posts/opl-hugo-yaml-metadata/</loc>
+    <lastmod>2026-11-06T16:42:22+07:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/</loc>
+    <loc>http://localhost:1313/ot-tech-blog/posts/</loc>
+    <lastmod>2026-11-06T16:42:22+07:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>http://localhost:1313/ot-tech-blog/tags/oee/</loc>
+    <lastmod>2026-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/tags/opl/</loc>
+    <lastmod>2026-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/posts/opl-02-sql-oee-calculation/</loc>
+    <lastmod>2026-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/tags/ot-data-analytics/</loc>
+    <lastmod>2026-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/tags/postgresql/</loc>
+    <lastmod>2026-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/tags/sql/</loc>
+    <lastmod>2026-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/tags/</loc>
+    <lastmod>2026-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/about/</loc>
+    <lastmod>2026-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/tags/grafana/</loc>
+    <lastmod>2026-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/posts/opl-grafana-postgresql/</loc>
+    <lastmod>2026-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/tags/ot-analytics/</loc>
+    <lastmod>2026-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/tags/smrp/</loc>
+    <lastmod>2026-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/opl-hugo-yaml-metadata/</loc>
+  </url><url>
+    <loc>http://localhost:1313/ot-tech-blog/categories/</loc>
   </url>
 </urlset>

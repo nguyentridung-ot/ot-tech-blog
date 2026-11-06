@@ -1,20 +1,20 @@
 {
   "name": "Nguyễn Trí Dũng | Industrial OT & Asset Management",
   "short_name": "Nguyễn Trí Dũng | Industrial OT & Asset Management",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/ot-tech-blog/",
+  "scope": "/ot-tech-blog/",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#FFFFFF",
   "icons": [
     {
       "type": "image/png",
-      "src": "/favicon.png",
+      "src": "/ot-tech-blog/favicon.png",
       "sizes": "96x96"
     },
     {
       "type": "image/svg+xml",
-      "src": "/favicon.svg",
+      "src": "/ot-tech-blog/favicon.svg",
       "sizes": "any"
     }
   ]

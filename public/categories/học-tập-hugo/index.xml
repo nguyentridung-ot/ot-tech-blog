@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Học Tập Hugo on Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</title>
+		<link>http://localhost:1313/ot-tech-blog/categories/h%E1%BB%8Dc-t%E1%BA%ADp-hugo/</link>
+		<description>Recent content in Học Tập Hugo on Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</description>
+		<generator>Hugo</generator>
+		<language>vi-vn</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 06 Nov 2026 16:44:00 +0700</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/ot-tech-blog/categories/h%E1%BB%8Dc-t%E1%BA%ADp-hugo/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Cấu hình Front Matter YAML &amp; SEO Metadata chuẩn Hugo Book Theme</title>
+				<link>http://localhost:1313/ot-tech-blog/opl-hugo-yaml-metadata/</link>
+				<pubDate>Fri, 06 Nov 2026 16:44:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/opl-hugo-yaml-metadata/</guid>
+				<description>Tìm hiểu cách thiết lập trọng số weight, cấu hình mục lục TOC và các thẻ meta SEO, Open Graph giúp tăng thứ hạng bài viết Hugo trên Google.</description>
+			</item>
+	</channel>
+</rss>

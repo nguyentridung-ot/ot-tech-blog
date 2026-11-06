@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>OEE on Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</title>
+		<link>http://localhost:1313/ot-tech-blog/tags/oee/</link>
+		<description>Recent content in OEE on Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</description>
+		<generator>Hugo</generator>
+		<language>vi-vn</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 06 Nov 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/ot-tech-blog/tags/oee/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>OPL #02: Viết câu lệnh SQL tính hiệu suất thiết bị tổng thể (OEE) theo ca từ dữ liệu PLC</title>
+				<link>http://localhost:1313/ot-tech-blog/posts/opl-02-sql-oee-calculation/</link>
+				<pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/posts/opl-02-sql-oee-calculation/</guid>
+				<description>&lt;h2 id=&#34;1-bài-toán-thực-tế-trong-nhà-máy&#34;&gt;1. Bài toán Thực tế trong Nhà máy&lt;a class=&#34;anchor&#34; href=&#34;#1-b%c3%a0i-to%c3%a1n-th%e1%bb%b1c-t%e1%ba%bf-trong-nh%c3%a0-m%c3%a1y&#34; aria-label=&#34;Link&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Thay vì để đội vận hành ghi chép tay sản lượng, thời gian dừng máy vào Excel cuối mỗi ca, hệ thống SCADA/Historian hoàn toàn có thể tự động tính toán &lt;strong&gt;OEE (Overall Equipment Effectiveness)&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Bài học 1 điểm này hướng dẫn cách viết một câu lệnh SQL chuẩn hóa để tính toán OEE từ hai bảng dữ liệu gốc đẩy từ PLC lên Database: &lt;code&gt;machine_runtime_logs&lt;/code&gt; (nhật ký trạng thái) và &lt;code&gt;production_counters&lt;/code&gt; (sản lượng đếm).&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
