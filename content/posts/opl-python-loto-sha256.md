@@ -22,13 +22,13 @@ Trong hệ thống tự động hóa an toàn công nghiệp và quản trị b�
 Bài học 1 điểm này hướng dẫn kỹ thuật:
 *   Đóng gói quy trình LOTO dưới dạng một cấu trúc **JSON Payload chuẩn hóa**.
 *   Xây dựng thuật toán **Python Cryptographic SHA-256** để tạo mã băm độc bản 64 ký tự hex.
-*   Tự động phát hiện và phát cảnh báo nếu có bất kỳ hành vi thay đổi dữ liệu trái phép nào trên tài liệu thực địa.
+*   Tự động phát hiện và phát cảnh báo nếu có bất kỳ hành vi thay đổi dữ liệu trái phép nào trên tài liệu thực địa. 
 
 ***
 
 ## 2. Đoạn Mã Nguồn Python Chuẩn Hóa (Production-Ready Script)
 
-Script Python dưới đây thực hiện mã hóa băm SHA-256 và giả lập thử nghiệm cơ chế đối soát tự động khi cấu trúc Payload bị can thiệp thay đổi thông số:
+Script Python dưới đây thực hiện mã hóa băm SHA-256 & giả lập thử nghiệm cơ chế đối soát tự động khi cấu trúc Payload bị can thiệp thay đổi thông số:
 
 ```python
 import hashlib
