@@ -1,16 +1,11 @@
 ---
-# --- CẤU HÌNH HIỂN THỊ (HUGO BOOK THEME) ---
 title: "Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA & Mã hóa SHA-256"
 date: 2026-11-06T00:00:00+07:00
 draft: false
-bookToC: true               # Bật Mục lục tự động bên phải bài viết
-bookSearchExclude: false    # Cho phép thanh tìm kiếm quét bài viết này
+bookToC: true
+bookSearchExclude: false
 weight: 10
-
-# --- CẤU HÌNH TỐI ƯU HÓA SEO ---
 description: "Giải pháp số hóa và chuẩn hóa quy trình an toàn cách ly năng lượng nguy hiểm (LOTO) chuẩn OSHA 29 CFR 1910.147 kết hợp mã băm bảo mật SHA-256 chống giả mạo dữ liệu thực địa."
-
-# --- ĐỊNH DANH & PHÂN LOẠI NỘI DUNG ---
 categories: ["Industrial OT Safety"]
 tags: ["OT Safety", "LOTO", "OSHA 1910.147", "SHA-256", "SOP Automation"]
 ---
@@ -20,7 +15,7 @@ tags: ["OT Safety", "LOTO", "OSHA 1910.147", "SHA-256", "SOP Automation"]
 Trong vận hành và bảo trì nhà máy công nghiệp, sự cố liên quan đến **Cách ly năng lượng nguy hiểm (Lockout/Tagout - LOTO)** luôn nằm trong nhóm nguyên nhân hàng đầu dẫn đến tai nạn nghiêm trọng. Hệ thống quy trình vận hành tiêu chuẩn (SOPs) dạng giấy hoặc file tĩnh hiện nay đang bộc lộ 3 lỗ hổng lớn:
 
 *   **Rủi ro sai lệch phiên bản (Tampering Risk):** File Word/Excel lưu cục bộ hoặc bản in giấy rất dễ bị sửa đổi thông số kỹ thuật thực địa một cách tùy tiện mà không để lại lịch sử vết (Audit Trail).
-*   **Rào cản ngôn ngữ thực tế (Bilingual Barrier):** Sự đứt gãy thông tin giữa thuật ngữ kỹ thuật Tiếng Anh hệ thống và thao tác Tiếng Việt của kỹ thuật viên trực ca ca dẫn đến hiểu sai bước thực hiện.
+*   **Rào cản ngôn ngữ thực tế (Bilingual Barrier):** Sự đứt gãy thông tin giữa thuật ngữ kỹ thuật Tiếng Anh hệ thống và thao tác Tiếng Việt của kỹ thuật viên trực ca dẫn đến hiểu sai bước thực hiện.
 *   **Lỗ hổng Zero-Trust (Bất đối xứng thông tin):** Kỹ sư an toàn (EHS) hoặc người cấp phép (Issuer) không có công cụ số hóa để đối soát tức thì tính toàn vẹn của quy trình trước khi ký lệnh cho phép làm việc (Work Permit).
 
 ***
