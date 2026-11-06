@@ -1,8 +1,10 @@
 ---
 title: "Industrial OT & Asset Management Portal"
 type: "docs"
+bookFlatSection: true
 description: "Technical Authority Storefront & B2B Async Lead Funnel - Nguyễn Trí Dũng | Remote Industrial OT Specialist"
 ---
+
 
 # Industrial OT & Asset Management Portal
 
