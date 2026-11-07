@@ -59,3 +59,6 @@ Nhằm duy trì sự tập trung chuyên môn cao nhất và bảo đảm chất
 Nếu tổ chức hoặc doanh nghiệp quốc tế của bạn cần thầu phụ/chuyên gia độc lập về **Chuẩn hóa LOTO SOPs SHA-256** hoặc **Thiết kế OT Analytics Engine**:
 
 > 📌 **Vui lòng gửi mô tả bài toán kỹ thuật qua Form bên dưới. Tôi sẽ nghiên cứu hồ sơ và phản hồi giải pháp qua Email/Jira Ticket trong vòng 24 giờ.**
+
+<iframe data-tally-src="https://tally.so/embed/M1DrPA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1158" frameborder="0" marginheight="0" marginwidth="0" title="B2B Async Technical Screening Form"></iframe>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
