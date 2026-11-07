@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="vi-vn" dir="ltr"
+    data-theme="auto"
+    data-layout="centered">
+
+<head><script src="/ot-tech-blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=ot-tech-blog/livereload" data-no-instant defer></script>
+  
+  <meta name="generator" content="Hugo 0.169.0">
+  <meta name="generator-theme" content="Book Theme: https://github.com/alex-shpak/hugo-book">
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bản thiết kế kiến trúc và hướng dẫn triển khai toàn diện hệ thống Industrial OT Analytics Engine sử dụng Docker, PostgreSQL Time-Series và Grafana Control Room dựa trên mô hình tham chiếu FAC_GLOBAL_01.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark">
+<meta name="format-detection" content="telephone=no"><meta property="og:url" content="http://localhost:1313/ot-tech-blog/posts/ot-analytics-engine/">
+	<meta property="og:site_name" content="Nguyễn Trí Dũng | Industrial OT &amp; Asset Management">
+	<meta property="og:title" content="Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp; Triển Khai Hạ Tầng">
+	<meta property="og:description" content="Bản thiết kế kiến trúc và hướng dẫn triển khai toàn diện hệ thống Industrial OT Analytics Engine sử dụng Docker, PostgreSQL Time-Series và Grafana Control Room dựa trên mô hình tham chiếu FAC_GLOBAL_01.">
+	<meta property="og:locale" content="vi_vn">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-11-06T17:30:00+07:00">
+		<meta property="article:modified_time" content="2026-11-06T17:30:00+07:00">
+		<meta property="article:tag" content="Industrial OT">
+		<meta property="article:tag" content="Docker">
+		<meta property="article:tag" content="PostgreSQL">
+		<meta property="article:tag" content="Grafana">
+		<meta property="article:tag" content="Data Pipeline">
+		<meta property="article:tag" content="Technical Debt">
+
+
+	<meta itemprop="name" content="Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp; Triển Khai Hạ Tầng">
+	<meta itemprop="description" content="Bản thiết kế kiến trúc và hướng dẫn triển khai toàn diện hệ thống Industrial OT Analytics Engine sử dụng Docker, PostgreSQL Time-Series và Grafana Control Room dựa trên mô hình tham chiếu FAC_GLOBAL_01.">
+	<meta itemprop="datePublished" content="2026-11-06T17:30:00+07:00">
+	<meta itemprop="dateModified" content="2026-11-06T17:30:00+07:00">
+	<meta itemprop="wordCount" content="1397">
+	<meta itemprop="keywords" content="Industrial OT,Docker,PostgreSQL,Grafana,Data Pipeline,Technical Debt">
+
+<title>Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp; Triển Khai Hạ Tầng • Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</title>
+<link rel="icon" href="/ot-tech-blog/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/ot-tech-blog/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="/ot-tech-blog/apple-touch-icon.png">
+
+<link rel="manifest" href="/ot-tech-blog/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ot-tech-blog/posts/ot-analytics-engine/">
+<link rel="stylesheet" href="/ot-tech-blog/book.min.3b47c5c3053ddd1846b44ca0278f9365d1cc6def0c56efaee4fbb8b7a57c782b.css" integrity="sha256-O0fFwwU93RhGtEygJ4&#43;TZdHMbe8MVu&#43;u5Pu4t6V8eCs=" crossorigin="anonymous">
+
+
+<script type="module" src="/ot-tech-blog/en.search.min.ecc416372109db310839652bbb83f7cd7d124bf44ea8a017d8f00d24422f5b29.js" integrity="sha256-7MQWNyEJ2zEIOWUru4P3zX0SS/ROqKAX2PANJEIvWyk=" crossorigin="anonymous"></script>
+  
+</head>
+
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <div class="book-container flex">
+    
+<aside class="book-menu" aria-label="Menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<div class="book-brand">
+  <a class="flex align-center" href="/ot-tech-blog/"><span>Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</span>
+  </a>
+</div>
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" role="searchbox" enterkeyhint="search"
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results" aria-live="polite"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Posts</a>
+  
+
+          
+  <ul>
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ot-tech-blog/posts/loto-sop-sha256/" class="">
+      Kiến trúc LOTO SOPs Song ngữ chuẩn OSHA &amp; Mã hóa SHA-256</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ot-tech-blog/posts/opl-python-loto-sha256/" class="">
+      OPL #02: Python Script xác thực SHA-256 Hash cho LOTO JSON Payload</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ot-tech-blog/posts/ot-analytics-engine/" class="active">
+      Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp; Triển Khai Hạ Tầng</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ot-tech-blog/posts/opl-02-sql-oee-calculation/" class="">
+      OPL #02: Viết câu lệnh SQL tính hiệu suất thiết bị tổng thể (OEE) theo ca từ dữ liệu PLC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ot-tech-blog/posts/opl-grafana-postgresql/" class="">
+      OPL #01: Cấu hình Grafana Control Room Dashboard kết nối PostgreSQL Query Time-Series</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ot-tech-blog/about/" class="">
+      About Me | Nguyễn Trí Dũng</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/ot-tech-blog/about/">📌 Giới thiệu (About Me)</a></li><li><a href="/ot-tech-blog/posts/">📚 Bài viết Kỹ thuật (Posts)</a></li></ul>
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <header class="book-header hidden">
+      
+  <div class="flex align-center justify-between gap">
+  <input type="checkbox" class="toggle" id="menu-control" />
+  <label for="menu-control" aria-label="Menu">
+    <svg class="book-icon"><use href="/ot-tech-blog/iconset.min.90a7fd302dc1b9bc3c291688faee66a3e60a9209f59b89fa00669e35d6907b3f.svg#menu"></use></svg>
+  </label>
+
+  <div class="book-brand">
+  <a class="flex align-center" href="/ot-tech-blog/"><span>Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</span>
+  </a>
+</div>
+
+
+  
+  <input type="checkbox" class="toggle" id="toc-control" />
+  <label for="toc-control" aria-label="Table of Contents">
+    <svg class="book-icon"><use href="/ot-tech-blog/iconset.min.90a7fd302dc1b9bc3c291688faee66a3e60a9209f59b89fa00669e35d6907b3f.svg#toc"></use></svg>
+  </label>
+  
+</div>
+
+ 
+    </header>
+
+    <main class="book-page">
+      
+      
+
+
+      
+<article class="markdown book-post">
+  <h1>
+    Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp; Triển Khai Hạ Tầng
+  </h1>
+  
+  <a class="flex align-center text-small book-post-date">
+    <svg class="book-icon" aria-hidden="true"><use href="/ot-tech-blog/iconset.min.90a7fd302dc1b9bc3c291688faee66a3e60a9209f59b89fa00669e35d6907b3f.svg#calendar"></use></svg>
+    <span>tháng 11 6, 2026</span>
+  </a>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/ot-tech-blog/categories/flagship-architecture/">Flagship Architecture</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/ot-tech-blog/tags/industrial-ot/">Industrial OT</a>, 
+      <a href="/ot-tech-blog/tags/docker/">Docker</a>, 
+      <a href="/ot-tech-blog/tags/postgresql/">PostgreSQL</a>, 
+      <a href="/ot-tech-blog/tags/grafana/">Grafana</a>, 
+      <a href="/ot-tech-blog/tags/data-pipeline/">Data Pipeline</a>, 
+      <a href="/ot-tech-blog/tags/technical-debt/">Technical Debt</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><h1 id="industrial-ot-analytics-engine--hướng-dẫn-kiến-trúc--triển-khai-hạ-tầng">Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp; Triển Khai Hạ Tầng<a class="anchor" href="#industrial-ot-analytics-engine--h%c6%b0%e1%bb%9bng-d%e1%ba%abn-ki%e1%ba%bfn-tr%c3%bac--tri%e1%bb%83n-khai-h%e1%ba%a1-t%e1%ba%a7ng" aria-label="Link"></a></h1>
+<h2 id="1-tổng-quan-hệ-thống--bối-cảnh-vận-hành">1. Tổng Quan Hệ Thống &amp; Bối Cảnh Vận Hành<a class="anchor" href="#1-t%e1%bb%95ng-quan-h%e1%bb%87-th%e1%bb%91ng--b%e1%bb%91i-c%e1%ba%a3nh-v%e1%ba%adn-h%c3%a0nh" aria-label="Link"></a></h2>
+<p>Trong các môi trường sản xuất công nghiệp hiện đại, việc theo dõi thời gian dừng máy (<strong>Downtime</strong>), tính toán các chỉ số độ tin cậy thiết bị như <strong>MTTR</strong> (Mean Time to Repair - Thời gian sửa chữa trung bình), <strong>MTBF</strong> (Mean Time Between Failures - Thời gian trung bình giữa các sự cố) và định lượng <strong>Điểm nợ kỹ thuật (MOP V7 Score)</strong> thường gặp rào cản lớn do các ốc đảo dữ liệu (Data Silos) cô lập giữa cổng kết nối Edge Gateway (PLC/SCADA) và hệ thống quản trị doanh nghiệp (ERP/MES).</p>
+<p>Tài liệu này cung cấp một kiến trúc toàn diện cho <strong>Industrial OT Analytics Engine</strong> — một bộ hạ tầng mô-đun hóa, triển khai nhanh bằng <strong>1-Click Containerized</strong> dựa trên nền tảng Docker, cơ sở dữ liệu chuỗi thời gian PostgreSQL và trung tâm giám sát trực quan Grafana Control Room.</p>
+<blockquote class=''>
+<p>🔒 <strong>Giao thức Bảo mật NDA &amp; Ẩn danh dữ liệu:</strong> Tất cả các sơ đồ kiến trúc, cấu trúc SQL, mã lệnh Python và luồng dữ liệu time-series trong bài viết này được xây dựng độc quyền dựa trên <strong>Mô hình tham chiếu tiêu chuẩn <code>FAC_GLOBAL_01</code></strong>. Hệ thống hoàn toàn không chứa bất kỳ nhật ký vận hành thực tế, mã thiết bị độc quyền hoặc dữ liệu sản xuất bảo mật của bất kỳ nhà máy cụ thể nào.</p>
+</blockquote><hr>
+<h2 id="2-bản-thiết-kế-hạ-tầng--container-hóa">2. Bản Thiết Kế Hạ Tầng &amp; Container Hóa<a class="anchor" href="#2-b%e1%ba%a3n-thi%e1%ba%bft-k%e1%ba%bf-h%e1%ba%a1-t%e1%ba%a7ng--container-h%c3%b3a" aria-label="Link"></a></h2>
+<p>Hệ thống ứng dụng mô hình triển khai <strong>1-Click Setup trên Docker</strong>, giúp cô lập hoàn toàn các thư viện phụ thuộc và cho phép triển khai tức thì trên các máy chủ nội bộ (Local Server), thiết bị biên (Edge Devices) hoặc máy ảo đám mây (Cloud VMs).</p>
+<h3 id="ma-trận-thành-phần-tech-stack">Ma Trận Thành Phần Tech Stack<a class="anchor" href="#ma-tr%e1%ba%adn-th%c3%a0nh-ph%e1%ba%a7n-tech-stack" aria-label="Link"></a></h3>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left">Dịch vụ Container</th>
+					<th style="text-align: left">Image / Phiên bản</th>
+					<th style="text-align: left">Chức năng vận hành</th>
+					<th style="text-align: left">Vai trò trong Data Pipeline</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left"><strong>ot-database</strong></td>
+					<td style="text-align: left">PostgreSQL 16 (Tối ưu hóa Time-Series)</td>
+					<td style="text-align: left">Lưu trữ siêu dữ liệu thiết bị, log sự cố dừng máy và các chỉ số tin cậy được tính toán.</td>
+					<td style="text-align: left">Lưu trữ dữ liệu lâu dài &amp; Đánh chỉ mục (Index).</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>ot-ingestion</strong></td>
+					<td style="text-align: left">Python 3.12 Async Worker</td>
+					<td style="text-align: left">Làm sạch, xác thực và chuyển đổi cấu trúc dữ liệu thô nhận từ luồng OPC-UA/MQTT.</td>
+					<td style="text-align: left">Thu thập &amp; Biến đổi dữ liệu (Ingestion &amp; Transformation).</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>ot-controlroom</strong></td>
+					<td style="text-align: left">Grafana 10.x</td>
+					<td style="text-align: left">Hiển thị các bảng điều khiển thời gian thực, biểu đồ OEE và thước đo Nợ kỹ thuật MOP V7.</td>
+					<td style="text-align: left">Trực quan hóa &amp; Báo cáo quản trị (Executive Reporting).</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="cấu-hình-triển-khai-docker-composeyml">Cấu Hình Triển Khai (<code>docker-compose.yml</code>)<a class="anchor" href="#c%e1%ba%a5u-h%c3%acnh-tri%e1%bb%83n-khai-docker-composeyml" aria-label="Link"></a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ot-database</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">postgres:16-alpine</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">ot_postgres_db</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">POSTGRES_DB</span>: <span style="color:#ae81ff">ot_analytics_db</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">POSTGRES_USER</span>: <span style="color:#ae81ff">ot_admin</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">POSTGRES_PASSWORD</span>: <span style="color:#ae81ff">\${POSTGRES_PASSWORD:-SecureOTPass2026!}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;5432:5432&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">postgres_data:/var/lib/postgresql/data</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./init-scripts:/docker-entrypoint-initdb.d</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ot-controlroom</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">grafana/grafana:10.2.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">ot_grafana_dashboard</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;3000:3000&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">GF_SECURITY_ADMIN_USER=admin</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">GF_SECURITY_ADMIN_PASSWORD=\${GRAFANA_PASSWORD:-AdminOT2026!}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">grafana_data:/var/lib/grafana</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">ot-database</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">postgres_data</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">grafana_data:</span></span></span></code></pre></div><hr>
+<h2 id="3-cấu-trúc-cơ-sở-dữ-liệu--truy-vấn-phân-tích-ddl--sql">3. Cấu Trúc Cơ Sở Dữ Liệu &amp; Truy Vấn Phân Tích (DDL &amp; SQL)<a class="anchor" href="#3-c%e1%ba%a5u-tr%c3%bac-c%c6%a1-s%e1%bb%9f-d%e1%bb%af-li%e1%bb%87u--truy-v%e1%ba%a5n-ph%c3%a2n-t%c3%adch-ddl--sql" aria-label="Link"></a></h2>
+<h3 id="31-cấu-trúc-schema-ddl-postgresql">3.1 Cấu Trúc Schema DDL (PostgreSQL)<a class="anchor" href="#31-c%e1%ba%a5u-tr%c3%bac-schema-ddl-postgresql" aria-label="Link"></a></h3>
+<p>Mô hình dữ liệu được thiết kế tối ưu để ghi lại thông tin thiết bị và các sự kiện dừng máy cho mô hình tham chiếu <code>FAC_GLOBAL_01</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Khởi tạo Enum cho Trạng thái Vận hành của Thiết bị
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TYPE</span> asset_status_enum <span style="color:#66d9ef">AS</span> ENUM (<span style="color:#e6db74">&#39;RUNNING&#39;</span>, <span style="color:#e6db74">&#39;UNPLANNED_STOP&#39;</span>, <span style="color:#e6db74">&#39;PLANNED_MAINTENANCE&#39;</span>, <span style="color:#e6db74">&#39;DEGRADED&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Bảng 1: Siêu dữ liệu cấu hình thiết bị (Equipment Master Metadata)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> equipment_master (
+</span></span><span style="display:flex;"><span>    asset_id VARCHAR(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,          <span style="color:#75715e">-- Ví dụ: &#39;FAC_GLOBAL_01_PACK_01&#39;
+</span></span></span><span style="display:flex;"><span>    asset_name VARCHAR(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    line_code VARCHAR(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,            <span style="color:#75715e">-- Ví dụ: &#39;LINE_ALPHA&#39;
+</span></span></span><span style="display:flex;"><span>    design_speed_ppm INT <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,             <span style="color:#75715e">-- Tốc độ thiết kế (sản phẩm/phút)
+</span></span></span><span style="display:flex;"><span>    created_at <span style="color:#66d9ef">TIMESTAMP</span> <span style="color:#66d9ef">WITH</span> TIME <span style="color:#66d9ef">ZONE</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Bảng 2: Nhật ký dừng máy &amp; Nợ kỹ thuật (Downtime Events &amp; Technical Debt Logs)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> downtime_logs (
+</span></span><span style="display:flex;"><span>    event_id SERIAL <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    asset_id VARCHAR(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">REFERENCES</span> equipment_master(asset_id),
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#66d9ef">TIMESTAMP</span> <span style="color:#66d9ef">WITH</span> TIME <span style="color:#66d9ef">ZONE</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>    end_time <span style="color:#66d9ef">TIMESTAMP</span> <span style="color:#66d9ef">WITH</span> TIME <span style="color:#66d9ef">ZONE</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- Tự động tính thời gian dừng máy theo giây (Generated Column)
+</span></span></span><span style="display:flex;"><span>    duration_seconds INT <span style="color:#66d9ef">GENERATED</span> ALWAYS <span style="color:#66d9ef">AS</span> (<span style="color:#66d9ef">EXTRACT</span>(EPOCH <span style="color:#66d9ef">FROM</span> (end_time <span style="color:#f92672">-</span> start_time))::INT) STORED,
+</span></span><span style="display:flex;"><span>    stop_reason_category VARCHAR(<span style="color:#ae81ff">100</span>),          <span style="color:#75715e">-- Ví dụ: &#39;ELECTRICAL_SENSOR_FAILURE&#39;
+</span></span></span><span style="display:flex;"><span>    technical_debt_impact_score NUMERIC(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>),  <span style="color:#75715e">-- Điểm MOP V7 (Từ 0.00 đến 100.00)
+</span></span></span><span style="display:flex;"><span>    status asset_status_enum <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;UNPLANNED_STOP&#39;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Đánh chỉ mục Index hiệu năng cao cho dữ liệu Time-Series
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> idx_downtime_asset_time <span style="color:#66d9ef">ON</span> downtime_logs (asset_id, start_time <span style="color:#66d9ef">DESC</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> idx_downtime_status <span style="color:#66d9ef">ON</span> downtime_logs (status);</span></span></code></pre></div><h3 id="32-tối-ưu-hóa-truy-vấn-mttr-mtbf--tỷ-lệ-sẵn-sàng--với-materialized-view">3.2 Tối Ưu Hóa Truy Vấn MTTR, MTBF &amp; Tỷ Lệ Sẵn Sàng (%) Với Materialized View<a class="anchor" href="#32-t%e1%bb%91i-%c6%b0u-h%c3%b3a-truy-v%e1%ba%a5n-mttr-mtbf--t%e1%bb%b7-l%e1%bb%87-s%e1%ba%b5n-s%c3%a0ng--v%e1%bb%9bi-materialized-view" aria-label="Link"></a></h3>
+<p>Để đảm bảo độ trễ truy vấn dưới 1 giây (sub-second) trên các Dashboard Grafana khi đối mặt với hàng triệu dòng log sự kiện, các chỉ số độ tin cậy được tổng hợp sẵn vào một <strong>Materialized View</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> MATERIALIZED <span style="color:#66d9ef">VIEW</span> mv_equipment_reliability_30d <span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    asset_id,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">COUNT</span>(event_id) <span style="color:#66d9ef">AS</span> total_failure_events,
+</span></span><span style="display:flex;"><span>    ROUND(<span style="color:#66d9ef">SUM</span>(duration_seconds) <span style="color:#f92672">/</span> <span style="color:#ae81ff">3600</span>.<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">AS</span> total_downtime_hours,
+</span></span><span style="display:flex;"><span>    ROUND(<span style="color:#66d9ef">AVG</span>(duration_seconds) <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span>.<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">AS</span> mttr_minutes,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- Tính toán phần trăm thời gian sẵn sàng của thiết bị trong 30 ngày
+</span></span></span><span style="display:flex;"><span>    ROUND(
+</span></span><span style="display:flex;"><span>        (<span style="color:#ae81ff">30</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3600</span> <span style="color:#f92672">-</span> COALESCE(<span style="color:#66d9ef">SUM</span>(duration_seconds), <span style="color:#ae81ff">0</span>)) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>.<span style="color:#ae81ff">0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">30</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3600</span>), <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    ) <span style="color:#66d9ef">AS</span> availability_percentage,
+</span></span><span style="display:flex;"><span>    ROUND(<span style="color:#66d9ef">AVG</span>(technical_debt_impact_score), <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">AS</span> avg_tech_debt_mop_v7
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> downtime_logs
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> start_time <span style="color:#f92672">&gt;=</span> NOW() <span style="color:#f92672">-</span> INTERVAL <span style="color:#e6db74">&#39;30 days&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> asset_id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Đánh chỉ mục Unique Index trên Materialized View để hỗ trợ làm mới dữ liệu nhanh
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">UNIQUE</span> <span style="color:#66d9ef">INDEX</span> idx_mv_reliability_asset <span style="color:#66d9ef">ON</span> mv_equipment_reliability_30d (asset_id);</span></span></code></pre></div><hr>
+<h2 id="4-cấu-hình-grafana-control-room-dashboard">4. Cấu Hình Grafana Control Room Dashboard<a class="anchor" href="#4-c%e1%ba%a5u-h%c3%acnh-grafana-control-room-dashboard" aria-label="Link"></a></h2>
+<p>Grafana kết nối trực tiếp đến PostgreSQL thông qua các câu lệnh SQL thuần (Native SQL). Bố cục phòng điều khiển trung tâm tích hợp 4 loại bảng hiển thị (Panel) cốt lõi:</p>
+<ol>
+<li><strong>Thước đo tổng thể độ sẵn sàng (Overall Availability Gauge %):</strong> Liên kết trực tiếp với trường <code>availability_percentage</code> từ bảng ảo <code>mv_equipment_reliability_30d</code> (Quy ước màu: Xanh lục: &gt;95%, Vàng: 85-95%, Đỏ: &lt;85%).</li>
+<li><strong>Thước đo tác động nợ kỹ thuật (Technical Debt Impact Gauge - Thang MOP V7):</strong> Hiển thị <code>avg_tech_debt_mop_v7</code> để định lượng mức độ xuống cấp tích lũy của máy móc và khối lượng công việc bảo trì tồn đọng.</li>
+<li><strong>Top 5 nguyên nhân gốc rễ gây dừng máy (Bar Chart):</strong> Xếp hạng <code>stop_reason_category</code> theo tổng thời gian tích lũy để làm nổi bật các tổn thất thiết bị nghiêm trọng nhất.</li>
+<li><strong>Trục thời gian trạng thái thực (State Timeline):</strong> Trực quan hóa các bước chuyển dịch trạng thái giữa <code>RUNNING</code>, <code>UNPLANNED_STOP</code>, và <code>DEGRADED</code> trong khung thời gian 24 giờ liên tục.</li>
+</ol>
+<hr>
+<h2 id="5-tuyên-bố-miễn-trừ-trách-nhiệm--hợp-tác-b2b-bất-đồng-bộ">5. Tuyên Bố Miễn Trừ Trách Nhiệm &amp; Hợp Tác B2B Bất Đồng Bộ<a class="anchor" href="#5-tuy%c3%aan-b%e1%bb%91-mi%e1%bb%85n-tr%e1%bb%ab-tr%c3%a1ch-nhi%e1%bb%87m--h%e1%bb%a3p-t%c3%a1c-b2b-b%e1%ba%a5t-%c4%91%e1%bb%93ng-b%e1%bb%99" aria-label="Link"></a></h2>
+<h3 id="-lưu-ý-về-bản-phác-thảo-ai--yêu-cầu-phê-duyệt-thực-địa">⚠️ Lưu Ý Về Bản Phác Thảo AI &amp; Yêu Cầu Phê Duyệt Thực Địa<a class="anchor" href="#-l%c6%b0u-%c3%bd-v%e1%bb%81-b%e1%ba%a3n-ph%c3%a1c-th%e1%ba%a3o-ai--y%c3%aau-c%e1%ba%a7u-ph%c3%aa-duy%e1%bb%87t-th%e1%bb%b1c-%c4%91%e1%bb%8ba" aria-label="Link"></a></h3>
+<p>Kiến trúc và toàn bộ mã nguồn này được chuẩn bị với sự hỗ trợ của <strong>Trợ lý AI (Quy trình làm việc Human-in-the-Loop - Có sự giám sát của con người)</strong>.</p>
+<ul>
+<li><strong>Cung cấp nguyên trạng (As-Is):</strong> Tất cả các script cấu hình và schema cơ sở dữ liệu được cung cấp dưới dạng &ldquo;như hiện có&rdquo; nhằm mục đích tham khảo kiến trúc và thử nghiệm trong môi trường Sandbox (môi trường cô lập).</li>
+<li><strong>Yêu cầu bắt buộc về chữ ký phê duyệt chuyên gia:</strong> Bất kỳ việc triển khai mã nguồn hoặc schema này vào hệ thống PLC, SCADA hoặc CMMS đang vận hành thực tế tại nhà máy <strong>phải được xem xét và ký phê duyệt bởi Kỹ sư trưởng Tự động hóa / Kỹ sư trưởng Bảo trì</strong> có đủ năng lực trước khi đưa vào sản xuất.</li>
+</ul>
+<h3 id="-dịch-vụ-kỹ-thuật-b2b-từ-xa---vận-hành-bất-đồng-bộ-async-first">🛠️ Dịch Vụ Kỹ Thuật B2B Từ Xa - Vận Hành Bất Đồng Bộ (Async-First)<a class="anchor" href="#-d%e1%bb%8bch-v%e1%bb%a5-k%e1%bb%b9-thu%e1%ba%adt-b2b-t%e1%bb%ab-xa---v%e1%ba%adn-h%c3%a0nh-b%e1%ba%a5t-%c4%91%e1%bb%93ng-b%e1%bb%99-async-first" aria-label="Link"></a></h3>
+<p>Tôi cung cấp dịch vụ chuyên sâu về <strong>Kỹ thuật hạ tầng dữ liệu OT &amp; Phòng điều khiển trung tâm (Control Room Engineering) B2B từ xa</strong>, hoạt động theo giao thức nghiêm ngặt <strong>Ưu tiên bất động bộ (Không họp trực tiếp)</strong>:</p>
+<ul>
+<li><strong>Kênh giao tiếp:</strong> Trao đổi 100% bằng văn bản, tài liệu đặc tả và quản lý tác vụ qua Slack, Jira, GitHub, hoặc Email bằng tiếng Anh kỹ thuật chuyên nghiệp (B2 Technical English).</li>
+<li><strong>Không cung cấp dịch vụ trực tiếp tại hiện trường:</strong> Cắt giảm hoàn toàn các chi phí họp hành hội nghị và khảo sát thực địa, đảm bảo tập trung tối đa hiệu suất cho công việc kỹ thuật cốt lõi.</li>
+</ul>
+<p>Để gửi yêu cầu kỹ thuật hoặc đặt hàng thiết kế Data Pipeline tùy chỉnh, vui lòng sử dụng <em>Biểu mẫu Sàng lọc Kỹ thuật</em> tại trang Liên hệ hoặc tạo một Ticket yêu cầu thông số kỹ thuật.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <div>
+  
+    <a href="/ot-tech-blog/posts/opl-python-loto-sha256/" class="flex align-center">
+      <svg class="book-icon" aria-hidden="true"><use href="/ot-tech-blog/iconset.min.90a7fd302dc1b9bc3c291688faee66a3e60a9209f59b89fa00669e35d6907b3f.svg#backward"></use></svg>
+      <span>OPL #02: Python Script xác thực SHA-256 Hash cho LOTO JSON Payload</span>
+    </a>
+  
+  </div>
+  <div>
+  
+    <a href="/ot-tech-blog/posts/opl-02-sql-oee-calculation/" class="flex align-center">
+      <span>OPL #02: Viết câu lệnh SQL tính hiệu suất thiết bị tổng thể (OEE) theo ca từ dữ liệu PLC</span>
+      <svg class="book-icon" aria-hidden="true"><use href="/ot-tech-blog/iconset.min.90a7fd302dc1b9bc3c291688faee66a3e60a9209f59b89fa00669e35d6907b3f.svg#forward"></use></svg>
+    </a>
+  
+  </div>
+</div>
+
+ 
+        
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay" aria-hidden="true"></label>
+    </main>
+
+    
+  
+  <aside class="book-toc" aria-label="Table of Contents">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-tổng-quan-hệ-thống--bối-cảnh-vận-hành">1. Tổng Quan Hệ Thống &amp; Bối Cảnh Vận Hành</a></li>
+    <li><a href="#2-bản-thiết-kế-hạ-tầng--container-hóa">2. Bản Thiết Kế Hạ Tầng &amp; Container Hóa</a>
+      <ul>
+        <li><a href="#ma-trận-thành-phần-tech-stack">Ma Trận Thành Phần Tech Stack</a></li>
+        <li><a href="#cấu-hình-triển-khai-docker-composeyml">Cấu Hình Triển Khai (<code>docker-compose.yml</code>)</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-cấu-trúc-cơ-sở-dữ-liệu--truy-vấn-phân-tích-ddl--sql">3. Cấu Trúc Cơ Sở Dữ Liệu &amp; Truy Vấn Phân Tích (DDL &amp; SQL)</a>
+      <ul>
+        <li><a href="#31-cấu-trúc-schema-ddl-postgresql">3.1 Cấu Trúc Schema DDL (PostgreSQL)</a></li>
+        <li><a href="#32-tối-ưu-hóa-truy-vấn-mttr-mtbf--tỷ-lệ-sẵn-sàng--với-materialized-view">3.2 Tối Ưu Hóa Truy Vấn MTTR, MTBF &amp; Tỷ Lệ Sẵn Sàng (%) Với Materialized View</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-cấu-hình-grafana-control-room-dashboard">4. Cấu Hình Grafana Control Room Dashboard</a></li>
+    <li><a href="#5-tuyên-bố-miễn-trừ-trách-nhiệm--hợp-tác-b2b-bất-đồng-bộ">5. Tuyên Bố Miễn Trừ Trách Nhiệm &amp; Hợp Tác B2B Bất Đồng Bộ</a>
+      <ul>
+        <li><a href="#-lưu-ý-về-bản-phác-thảo-ai--yêu-cầu-phê-duyệt-thực-địa">⚠️ Lưu Ý Về Bản Phác Thảo AI &amp; Yêu Cầu Phê Duyệt Thực Địa</a></li>
+        <li><a href="#-dịch-vụ-kỹ-thuật-b2b-từ-xa---vận-hành-bất-đồng-bộ-async-first">🛠️ Dịch Vụ Kỹ Thuật B2B Từ Xa - Vận Hành Bất Đồng Bộ (Async-First)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </div>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

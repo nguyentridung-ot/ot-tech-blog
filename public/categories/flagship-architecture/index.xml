@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Flagship Architecture on Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</title>
+		<link>http://localhost:1313/ot-tech-blog/categories/flagship-architecture/</link>
+		<description>Recent content in Flagship Architecture on Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</description>
+		<generator>Hugo</generator>
+		<language>vi-vn</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 06 Nov 2026 17:30:00 +0700</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/ot-tech-blog/categories/flagship-architecture/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp; Triển Khai Hạ Tầng</title>
+				<link>http://localhost:1313/ot-tech-blog/posts/ot-analytics-engine/</link>
+				<pubDate>Fri, 06 Nov 2026 17:30:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/posts/ot-analytics-engine/</guid>
+				<description>&lt;h1 id=&#34;industrial-ot-analytics-engine--hướng-dẫn-kiến-trúc--triển-khai-hạ-tầng&#34;&gt;Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp;amp; Triển Khai Hạ Tầng&lt;a class=&#34;anchor&#34; href=&#34;#industrial-ot-analytics-engine--h%c6%b0%e1%bb%9bng-d%e1%ba%abn-ki%e1%ba%bfn-tr%c3%bac--tri%e1%bb%83n-khai-h%e1%ba%a1-t%e1%ba%a7ng&#34; aria-label=&#34;Link&#34;&gt;&lt;/a&gt;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;1-tổng-quan-hệ-thống--bối-cảnh-vận-hành&#34;&gt;1. Tổng Quan Hệ Thống &amp;amp; Bối Cảnh Vận Hành&lt;a class=&#34;anchor&#34; href=&#34;#1-t%e1%bb%95ng-quan-h%e1%bb%87-th%e1%bb%91ng--b%e1%bb%91i-c%e1%ba%a3nh-v%e1%ba%adn-h%c3%a0nh&#34; aria-label=&#34;Link&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Trong các môi trường sản xuất công nghiệp hiện đại, việc theo dõi thời gian dừng máy (&lt;strong&gt;Downtime&lt;/strong&gt;), tính toán các chỉ số độ tin cậy thiết bị như &lt;strong&gt;MTTR&lt;/strong&gt; (Mean Time to Repair - Thời gian sửa chữa trung bình), &lt;strong&gt;MTBF&lt;/strong&gt; (Mean Time Between Failures - Thời gian trung bình giữa các sự cố) và định lượng &lt;strong&gt;Điểm nợ kỹ thuật (MOP V7 Score)&lt;/strong&gt; thường gặp rào cản lớn do các ốc đảo dữ liệu (Data Silos) cô lập giữa cổng kết nối Edge Gateway (PLC/SCADA) và hệ thống quản trị doanh nghiệp (ERP/MES).&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

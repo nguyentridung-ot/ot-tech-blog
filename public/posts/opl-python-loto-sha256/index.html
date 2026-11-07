@@ -12,25 +12,35 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="Hướng dẫn bài học 1 điểm (OPL) về viết script Python tạo và đối soát mã băm Cryptographic SHA-256 cho LOTO JSON Payload nhằm chống biến đổi dữ liệu quy trình an toàn.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
 <meta name="color-scheme" content="light dark">
 <meta name="format-detection" content="telephone=no"><meta property="og:url" content="http://localhost:1313/ot-tech-blog/posts/opl-python-loto-sha256/">
 	<meta property="og:site_name" content="Nguyễn Trí Dũng | Industrial OT &amp; Asset Management">
-	<meta property="og:title" content="Opl Python Loto Sha256">
+	<meta property="og:title" content="OPL #02: Python Script xác thực SHA-256 Hash cho LOTO JSON Payload">
+	<meta property="og:description" content="Hướng dẫn bài học 1 điểm (OPL) về viết script Python tạo và đối soát mã băm Cryptographic SHA-256 cho LOTO JSON Payload nhằm chống biến đổi dữ liệu quy trình an toàn.">
 	<meta property="og:locale" content="vi_vn">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2026-11-06T17:29:25+07:00">
-		<meta property="article:modified_time" content="2026-11-06T17:29:25+07:00">
+		<meta property="article:published_time" content="2026-11-06T17:00:00+07:00">
+		<meta property="article:modified_time" content="2026-11-06T17:00:00+07:00">
+		<meta property="article:tag" content="OPL">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="LOTO">
+		<meta property="article:tag" content="SHA-256">
+		<meta property="article:tag" content="OSHA 1910.147">
+		<meta property="article:tag" content="OT Safety">
 
 
-	<meta itemprop="name" content="Opl Python Loto Sha256">
-	<meta itemprop="datePublished" content="2026-11-06T17:29:25+07:00">
-	<meta itemprop="dateModified" content="2026-11-06T17:29:25+07:00">
+	<meta itemprop="name" content="OPL #02: Python Script xác thực SHA-256 Hash cho LOTO JSON Payload">
+	<meta itemprop="description" content="Hướng dẫn bài học 1 điểm (OPL) về viết script Python tạo và đối soát mã băm Cryptographic SHA-256 cho LOTO JSON Payload nhằm chống biến đổi dữ liệu quy trình an toàn.">
+	<meta itemprop="datePublished" content="2026-11-06T17:00:00+07:00">
+	<meta itemprop="dateModified" content="2026-11-06T17:00:00+07:00">
+	<meta itemprop="wordCount" content="480">
+	<meta itemprop="keywords" content="OPL,Python,LOTO,SHA-256,OSHA 1910.147,OT Safety">
 
-<title>Opl Python Loto Sha256 • Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</title>
+<title>OPL #02: Python Script xác thực SHA-256 Hash cho LOTO JSON Payload • Nguyễn Trí Dũng | Industrial OT &amp; Asset Management</title>
 <link rel="icon" href="/ot-tech-blog/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/ot-tech-blog/favicon.png" sizes="any">
 <link rel="apple-touch-icon" href="/ot-tech-blog/apple-touch-icon.png">
@@ -40,7 +50,7 @@
 <link rel="stylesheet" href="/ot-tech-blog/book.min.3b47c5c3053ddd1846b44ca0278f9365d1cc6def0c56efaee4fbb8b7a57c782b.css" integrity="sha256-O0fFwwU93RhGtEygJ4&#43;TZdHMbe8MVu&#43;u5Pu4t6V8eCs=" crossorigin="anonymous">
 
 
-<script type="module" src="/ot-tech-blog/en.search.min.e9f6ca33738a491b9c98d28c9a0fc93828a6344565c21f4f6fc97f318248904f.js" integrity="sha256-6fbKM3OKSRucmNKMmg/JOCimNEVlwh9Pb8l/MYJIkE8=" crossorigin="anonymous"></script>
+<script type="module" src="/ot-tech-blog/en.search.min.ecc416372109db310839652bbb83f7cd7d124bf44ea8a017d8f00d24422f5b29.js" integrity="sha256-7MQWNyEJ2zEIOWUru4P3zX0SS/ROqKAX2PANJEIvWyk=" crossorigin="anonymous"></script>
   
 </head>
 
@@ -107,6 +117,32 @@
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ot-tech-blog/posts/opl-python-loto-sha256/" class="active">
+      OPL #02: Python Script xác thực SHA-256 Hash cho LOTO JSON Payload</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ot-tech-blog/posts/ot-analytics-engine/" class="">
+      Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp; Triển Khai Hạ Tầng</a>
+  
+
+        </li>
       
     
       
@@ -220,7 +256,7 @@
       
 <article class="markdown book-post">
   <h1>
-    Opl Python Loto Sha256
+    OPL #02: Python Script xác thực SHA-256 Hash cho LOTO JSON Payload
   </h1>
   
   <a class="flex align-center text-small book-post-date">
@@ -231,11 +267,103 @@
 
 
   
+  <div class="text-small">
+    
+      <a href="/ot-tech-blog/categories/industrial-ot-safety/">Industrial OT Safety</a>
+  </div>
+  
 
+  
+  <div class="text-small">
+    
+      <a href="/ot-tech-blog/tags/opl/">OPL</a>, 
+      <a href="/ot-tech-blog/tags/python/">Python</a>, 
+      <a href="/ot-tech-blog/tags/loto/">LOTO</a>, 
+      <a href="/ot-tech-blog/tags/sha-256/">SHA-256</a>, 
+      <a href="/ot-tech-blog/tags/osha-1910.147/">OSHA 1910.147</a>, 
+      <a href="/ot-tech-blog/tags/ot-safety/">OT Safety</a>
+  </div>
   
 
 
-  <div class="book-post-content markdown-inner"></div>
+  <div class="book-post-content markdown-inner"><h2 id="1-mục-tiêu-bài-học-1-điểm-opl">1. Mục tiêu Bài học 1 điểm (OPL)<a class="anchor" href="#1-m%e1%bb%a5c-ti%c3%aau-b%c3%a0i-h%e1%bb%8dc-1-%c4%91i%e1%bb%83m-opl" aria-label="Link"></a></h2>
+<p>Trong hệ thống tự động hóa an toàn công nghiệp và quản trị bảo trì (<strong>CMMS/EAM</strong>), việc truyền tải dữ liệu quy trình LOTO (Lockout/Tagout) qua hệ thống API đòi hỏi cơ chế <strong>Xác thực tính toàn vẹn (Zero-Tampering Verification)</strong> để đảm bảo an toàn tuyệt đối cho kỹ sư thực địa.</p>
+<p>Bài học 1 điểm này hướng dẫn kỹ thuật:</p>
+<ul>
+<li>Đóng gói quy trình LOTO dưới dạng một cấu trúc <strong>JSON Payload chuẩn hóa</strong>.</li>
+<li>Xây dựng thuật toán <strong>Python Cryptographic SHA-256</strong> để tạo mã băm độc bản 64 ký tự hex.</li>
+<li>Tự động phát hiện và phát cảnh báo nếu có bất kỳ hành vi thay đổi dữ liệu trái phép nào trên tài liệu thực địa.</li>
+</ul>
+<hr>
+<h2 id="2-đoạn-mã-nguồn-python-chuẩn-hóa-production-ready-script">2. Đoạn Mã Nguồn Python Chuẩn Hóa (Production-Ready Script)<a class="anchor" href="#2-%c4%91o%e1%ba%a1n-m%c3%a3-ngu%e1%bb%93n-python-chu%e1%ba%a9n-h%c3%b3a-production-ready-script" aria-label="Link"></a></h2>
+<p>Script Python dưới đây thực hiện mã hóa băm SHA-256 &amp; giả lập thử nghiệm cơ chế đối soát tự động khi cấu trúc Payload bị can thiệp thay đổi thông số:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> copy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_loto_payload_sha256</span>(payload: dict) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Tính toán mã băm SHA-256 độc bản cho LOTO JSON Payload.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Sử dụng sort_keys=True để đảm bảo thứ tự key nhất quán tuyệt đối.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Chuẩn hóa chuỗi JSON (sắp xếp key và định dạng mã hóa UTF-8)</span>
+</span></span><span style="display:flex;"><span>    serialized_json <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps(payload, sort_keys<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, ensure_ascii<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Tạo mã băm SHA-256</span>
+</span></span><span style="display:flex;"><span>    sha256_hash <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256(serialized_json<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sha256_hash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">verify_payload_integrity</span>(original_hash: str, current_payload: dict) <span style="color:#f92672">-&gt;</span> bool:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Đối soát mã băm hiện tại thực tế với mã băm gốc được lưu giữ trên hệ thống.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    current_hash <span style="color:#f92672">=</span> calculate_loto_payload_sha256(current_payload)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> current_hash <span style="color:#f92672">==</span> original_hash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ----------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DỮ LIỆU THỬ NGHIỆM: Payload LOTO Máy bơm ly tâm PUMP-201A</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ----------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>loto_payload_original <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sop_id&#34;</span>: <span style="color:#e6db74">&#34;LOTO-PUMP-201A-V1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;standard&#34;</span>: <span style="color:#e6db74">&#34;OSHA 29 CFR 1910.147&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;asset_id&#34;</span>: <span style="color:#e6db74">&#34;FAC_GLOBAL_01_PUMP_201A&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;isolation_steps&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;step&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;energy_type&#34;</span>: <span style="color:#e6db74">&#34;Electrical 380V AC&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;point&#34;</span>: <span style="color:#e6db74">&#34;MCC-01 CB-12&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;action_vi&#34;</span>: <span style="color:#e6db74">&#34;Ngắt CB-12 tại tủ MCC-01 và khóa Lockout&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;verification&#34;</span>: <span style="color:#e6db74">&#34;Test Zero Voltage with VOM (0V AC)&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;step&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;energy_type&#34;</span>: <span style="color:#e6db74">&#34;Fluid Pressure&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;point&#34;</span>: <span style="color:#e6db74">&#34;Suction Valve V-101 &amp; Discharge Valve V-102&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;action_vi&#34;</span>: <span style="color:#e6db74">&#34;Đóng van hút V-101 và van xả V-102, xả áp dư&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;verification&#34;</span>: <span style="color:#e6db74">&#34;Check Pressure Gauge PG-201 reading 0 Bar&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- KỊCH BẢN KIỂM THỬ HỆ THỐNG ---</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. Tính toán mã băm SHA-256 gốc khi xuất bản quy trình</span>
+</span></span><span style="display:flex;"><span>original_sha256 <span style="color:#f92672">=</span> calculate_loto_payload_sha256(loto_payload_original)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;🟢 Original SHA-256 Hash: </span><span style="color:#e6db74">{</span>original_sha256<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. Kiểm chứng Payload nguyên bản tại thực địa trước ca làm việc</span>
+</span></span><span style="display:flex;"><span>is_valid_original <span style="color:#f92672">=</span> verify_payload_integrity(original_sha256, loto_payload_original)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;✓ Trạng thái đối soát Payload gốc: </span><span style="color:#e6db74">{</span>is_valid_original<span style="color:#e6db74">}</span><span style="color:#e6db74"> (Hợp lệ)&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. Giả lập hành vi can thiệp trái phép (Sửa đổi giá trị điện áp kiểm tra từ 0V thành 220V)</span>
+</span></span><span style="display:flex;"><span>loto_payload_tampered <span style="color:#f92672">=</span> copy<span style="color:#f92672">.</span>deepcopy(loto_payload_original)
+</span></span><span style="display:flex;"><span>loto_payload_tampered[<span style="color:#e6db74">&#34;isolation_steps&#34;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;verification&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Test Zero Voltage with VOM (220V AC)&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tampered_sha256 <span style="color:#f92672">=</span> calculate_loto_payload_sha256(loto_payload_tampered)
+</span></span><span style="display:flex;"><span>is_valid_tampered <span style="color:#f92672">=</span> verify_payload_integrity(original_sha256, loto_payload_tampered)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">🔴 Tampered SHA-256 Hash : </span><span style="color:#e6db74">{</span>tampered_sha256<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;✗ Trạng thái đối soát Payload bị sửa: </span><span style="color:#e6db74">{</span>is_valid_tampered<span style="color:#e6db74">}</span><span style="color:#e6db74"> (CẢNH BÁO VI PHẠM!)&#34;</span>)</span></span></code></pre></div></div>
 </article>
  
       
@@ -253,8 +381,8 @@
   </div>
   <div>
   
-    <a href="/ot-tech-blog/posts/opl-02-sql-oee-calculation/" class="flex align-center">
-      <span>OPL #02: Viết câu lệnh SQL tính hiệu suất thiết bị tổng thể (OEE) theo ca từ dữ liệu PLC</span>
+    <a href="/ot-tech-blog/posts/ot-analytics-engine/" class="flex align-center">
+      <span>Industrial OT Analytics Engine – Hướng Dẫn Kiến Trúc &amp; Triển Khai Hạ Tầng</span>
       <svg class="book-icon" aria-hidden="true"><use href="/ot-tech-blog/iconset.min.90a7fd302dc1b9bc3c291688faee66a3e60a9209f59b89fa00669e35d6907b3f.svg#forward"></use></svg>
     </a>
   
@@ -285,7 +413,12 @@
     <div class="book-toc-content">
       
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-mục-tiêu-bài-học-1-điểm-opl">1. Mục tiêu Bài học 1 điểm (OPL)</a></li>
+    <li><a href="#2-đoạn-mã-nguồn-python-chuẩn-hóa-production-ready-script">2. Đoạn Mã Nguồn Python Chuẩn Hóa (Production-Ready Script)</a></li>
+  </ul>
+</nav>
 
 
 

@@ -10,9 +10,23 @@
 		
 		
 		
-			<lastBuildDate>Fri, 06 Nov 2026 16:44:00 +0700</lastBuildDate>
+			<lastBuildDate>Fri, 06 Nov 2026 17:30:00 +0700</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/ot-tech-blog/categories/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Flagship Architecture</title>
+				<link>http://localhost:1313/ot-tech-blog/categories/flagship-architecture/</link>
+				<pubDate>Fri, 06 Nov 2026 17:30:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/categories/flagship-architecture/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Industrial OT Safety</title>
+				<link>http://localhost:1313/ot-tech-blog/categories/industrial-ot-safety/</link>
+				<pubDate>Fri, 06 Nov 2026 17:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/categories/industrial-ot-safety/</guid>
+				<description></description>
+			</item>
 			<item>
 				<title>Học Tập Hugo</title>
 				<link>http://localhost:1313/ot-tech-blog/categories/h%E1%BB%8Dc-t%E1%BA%ADp-hugo/</link>
@@ -25,13 +39,6 @@
 				<link>http://localhost:1313/ot-tech-blog/categories/t%E1%BB%91i-%C6%B0u-h%C3%B3a-seo/</link>
 				<pubDate>Fri, 06 Nov 2026 16:44:00 +0700</pubDate>
 				<guid>http://localhost:1313/ot-tech-blog/categories/t%E1%BB%91i-%C6%B0u-h%C3%B3a-seo/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Industrial OT Safety</title>
-				<link>http://localhost:1313/ot-tech-blog/categories/industrial-ot-safety/</link>
-				<pubDate>Fri, 06 Nov 2026 00:00:00 +0700</pubDate>
-				<guid>http://localhost:1313/ot-tech-blog/categories/industrial-ot-safety/</guid>
 				<description></description>
 			</item>
 	</channel>

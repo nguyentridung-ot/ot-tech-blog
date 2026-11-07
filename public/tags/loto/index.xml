@@ -10,7 +10,7 @@
 		
 		
 		
-			<lastBuildDate>Fri, 06 Nov 2026 00:00:00 +0700</lastBuildDate>
+			<lastBuildDate>Fri, 06 Nov 2026 17:00:00 +0700</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/ot-tech-blog/tags/loto/index.xml" rel="self" type="application/rss+xml" />
 			<item>
@@ -19,6 +19,13 @@
 				<pubDate>Fri, 06 Nov 2026 00:00:00 +0700</pubDate>
 				<guid>http://localhost:1313/ot-tech-blog/posts/loto-sop-sha256/</guid>
 				<description>&lt;h2 id=&#34;1-bài-toán-thực-địa-lỗ-hổng-quy-trình-loto-truyền-thống&#34;&gt;1. Bài toán thực địa: Lỗ hổng quy trình LOTO truyền thống&lt;a class=&#34;anchor&#34; href=&#34;#1-b%c3%a0i-to%c3%a1n-th%e1%bb%b1c-%c4%91%e1%bb%8ba-l%e1%bb%97-h%e1%bb%95ng-quy-tr%c3%acnh-loto-truy%e1%bb%81n-th%e1%bb%91ng&#34; aria-label=&#34;Link&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Trong vận hành và bảo trì nhà máy công nghiệp, sự cố liên quan đến &lt;strong&gt;Cách ly năng lượng nguy hiểm (Lockout/Tagout - LOTO)&lt;/strong&gt; luôn nằm trong nhóm nguyên nhân hàng đầu dẫn đến tai nạn nghiêm trọng. Hệ thống quy trình vận hành tiêu chuẩn (SOPs) dạng giấy hoặc file tĩnh hiện nay đang bộc lộ 3 lỗ hổng lớn:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>OPL #02: Python Script xác thực SHA-256 Hash cho LOTO JSON Payload</title>
+				<link>http://localhost:1313/ot-tech-blog/posts/opl-python-loto-sha256/</link>
+				<pubDate>Fri, 06 Nov 2026 17:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/posts/opl-python-loto-sha256/</guid>
+				<description>&lt;h2 id=&#34;1-mục-tiêu-bài-học-1-điểm-opl&#34;&gt;1. Mục tiêu Bài học 1 điểm (OPL)&lt;a class=&#34;anchor&#34; href=&#34;#1-m%e1%bb%a5c-ti%c3%aau-b%c3%a0i-h%e1%bb%8dc-1-%c4%91i%e1%bb%83m-opl&#34; aria-label=&#34;Link&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Trong hệ thống tự động hóa an toàn công nghiệp và quản trị bảo trì (&lt;strong&gt;CMMS/EAM&lt;/strong&gt;), việc truyền tải dữ liệu quy trình LOTO (Lockout/Tagout) qua hệ thống API đòi hỏi cơ chế &lt;strong&gt;Xác thực tính toàn vẹn (Zero-Tampering Verification)&lt;/strong&gt; để đảm bảo an toàn tuyệt đối cho kỹ sư thực địa.&lt;/p&gt;&#xA;&lt;p&gt;Bài học 1 điểm này hướng dẫn kỹ thuật:&lt;/p&gt;</description>
 			</item>
 	</channel>
 </rss>

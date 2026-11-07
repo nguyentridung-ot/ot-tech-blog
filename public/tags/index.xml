@@ -10,9 +10,93 @@
 		
 		
 		
-			<lastBuildDate>Fri, 06 Nov 2026 16:44:00 +0700</lastBuildDate>
+			<lastBuildDate>Fri, 06 Nov 2026 17:30:00 +0700</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/ot-tech-blog/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Data Pipeline</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/data-pipeline/</link>
+				<pubDate>Fri, 06 Nov 2026 17:30:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/data-pipeline/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Docker</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/docker/</link>
+				<pubDate>Fri, 06 Nov 2026 17:30:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/docker/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Grafana</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/grafana/</link>
+				<pubDate>Fri, 06 Nov 2026 17:30:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/grafana/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Industrial OT</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/industrial-ot/</link>
+				<pubDate>Fri, 06 Nov 2026 17:30:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/industrial-ot/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PostgreSQL</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/postgresql/</link>
+				<pubDate>Fri, 06 Nov 2026 17:30:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/postgresql/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Technical Debt</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/technical-debt/</link>
+				<pubDate>Fri, 06 Nov 2026 17:30:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/technical-debt/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LOTO</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/loto/</link>
+				<pubDate>Fri, 06 Nov 2026 17:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/loto/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>OPL</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/opl/</link>
+				<pubDate>Fri, 06 Nov 2026 17:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/opl/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>OSHA 1910.147</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/osha-1910.147/</link>
+				<pubDate>Fri, 06 Nov 2026 17:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/osha-1910.147/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>OT Safety</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/ot-safety/</link>
+				<pubDate>Fri, 06 Nov 2026 17:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/ot-safety/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/python/</link>
+				<pubDate>Fri, 06 Nov 2026 17:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>SHA-256</title>
+				<link>http://localhost:1313/ot-tech-blog/tags/sha-256/</link>
+				<pubDate>Fri, 06 Nov 2026 17:00:00 +0700</pubDate>
+				<guid>http://localhost:1313/ot-tech-blog/tags/sha-256/</guid>
+				<description></description>
+			</item>
 			<item>
 				<title>Book-Theme</title>
 				<link>http://localhost:1313/ot-tech-blog/tags/book-theme/</link>
@@ -56,24 +140,10 @@
 				<description></description>
 			</item>
 			<item>
-				<title>OPL</title>
-				<link>http://localhost:1313/ot-tech-blog/tags/opl/</link>
-				<pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/ot-tech-blog/tags/opl/</guid>
-				<description></description>
-			</item>
-			<item>
 				<title>OT Data Analytics</title>
 				<link>http://localhost:1313/ot-tech-blog/tags/ot-data-analytics/</link>
 				<pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
 				<guid>http://localhost:1313/ot-tech-blog/tags/ot-data-analytics/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>PostgreSQL</title>
-				<link>http://localhost:1313/ot-tech-blog/tags/postgresql/</link>
-				<pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/ot-tech-blog/tags/postgresql/</guid>
 				<description></description>
 			</item>
 			<item>
@@ -84,45 +154,10 @@
 				<description></description>
 			</item>
 			<item>
-				<title>LOTO</title>
-				<link>http://localhost:1313/ot-tech-blog/tags/loto/</link>
-				<pubDate>Fri, 06 Nov 2026 00:00:00 +0700</pubDate>
-				<guid>http://localhost:1313/ot-tech-blog/tags/loto/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>OSHA 1910.147</title>
-				<link>http://localhost:1313/ot-tech-blog/tags/osha-1910.147/</link>
-				<pubDate>Fri, 06 Nov 2026 00:00:00 +0700</pubDate>
-				<guid>http://localhost:1313/ot-tech-blog/tags/osha-1910.147/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>OT Safety</title>
-				<link>http://localhost:1313/ot-tech-blog/tags/ot-safety/</link>
-				<pubDate>Fri, 06 Nov 2026 00:00:00 +0700</pubDate>
-				<guid>http://localhost:1313/ot-tech-blog/tags/ot-safety/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>SHA-256</title>
-				<link>http://localhost:1313/ot-tech-blog/tags/sha-256/</link>
-				<pubDate>Fri, 06 Nov 2026 00:00:00 +0700</pubDate>
-				<guid>http://localhost:1313/ot-tech-blog/tags/sha-256/</guid>
-				<description></description>
-			</item>
-			<item>
 				<title>SOP Automation</title>
 				<link>http://localhost:1313/ot-tech-blog/tags/sop-automation/</link>
 				<pubDate>Fri, 06 Nov 2026 00:00:00 +0700</pubDate>
 				<guid>http://localhost:1313/ot-tech-blog/tags/sop-automation/</guid>
-				<description></description>
-			</item>
-			<item>
-				<title>Grafana</title>
-				<link>http://localhost:1313/ot-tech-blog/tags/grafana/</link>
-				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/ot-tech-blog/tags/grafana/</guid>
 				<description></description>
 			</item>
 			<item>
