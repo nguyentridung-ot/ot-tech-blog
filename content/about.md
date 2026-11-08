@@ -12,21 +12,19 @@ bookToc: true
 
 ## 1. Executive Profile & Engineering Identity
 
-Welcome. I am **Nguyễn Trí Dũng**, a Senior Industrial Operational Technology (OT) & Automation Specialist with over a decade of hands-on field experience in industrial manufacturing environments, PLC/SCADA integration, process control optimization, and equipment reliability engineering. 
+Welcome. I am **Nguyễn Trí Dũng**, a Senior Industrial Operational Technology (OT) & Automation Specialist with over a decade of hands-on field experience in industrial manufacturing environments, PLC/SCADA integration, process control optimization, and equipment reliability engineering.
 
 My engineering practice bridges the gap between field-level industrial hardware and modern enterprise data architectures. By pairing domain expertise in industrial operations with open-source software stacks (Docker, PostgreSQL Time-Series, Grafana), I help industrial enterprises, plant directors, and engineering teams transform raw machine downtime logs into verifiable reliability intelligence and automated safety compliance SOPs.
 
 ### Core Engineering Operating Spectrum
-
-*   **Field Hardware & Protocol Layer:** Siemens S7-1200/1500, Allen-Bradley Logix, Mitsubishi PLCs, OPC-UA Gateways, Modbus TCP, and Industrial IoT MQTT brokers.
-*   **Data Pipelines & Storage Layer:** Python async data workers, containerized PostgreSQL time-series databases, automated MTTR/MTBF aggregation, and MOP V7 technical debt scoring engines.
-*   **Enterprise Control Room & Visualization Layer:** Grafana Control Room dashboards, native SQL analytics views, plant availability metrics, and downtime root-cause tracking.
+* **Field Hardware & Protocol Layer:** Siemens S7-1200/1500, Allen-Bradley Logix, Mitsubishi PLCs, OPC-UA Gateways, Modbus TCP, and Industrial IoT MQTT brokers.
+* **Data Pipelines & Storage Layer:** Python async data workers, containerized PostgreSQL time-series databases, automated MTTR/MTBF aggregation, and MOP V7 technical debt scoring engines.
+* **Enterprise Control Room & Visualization Layer:** Grafana Control Room dashboards, native SQL analytics views, plant availability metrics, and downtime root-cause tracking.
 
 ### Core Specializations
-
-1.  **Industrial OT Analytics Architecture:** Engineering containerized, 1-Click deployable data ingestion pipelines for downtime monitoring and equipment technical debt tracking.
-2.  **Industrial Safety & Compliance Automation:** Designing bilingual (English - Vietnamese) Lockout/Tagout (LOTO) Standard Operating Procedures compliant with OSHA 29 CFR 1910.147, sealed with cryptographic SHA-256 hash signatures.
-3.  **Asynchronous B2B Subcontracting:** Delivering turnkey technical codebases, SQL DDL schemas, and documentation packages 100% remotely without live meetings.
+1. **Industrial OT Analytics Architecture:** Engineering containerized, 1-Click deployable data ingestion pipelines for downtime monitoring and equipment technical debt tracking.
+2. **Industrial Safety & Compliance Automation:** Designing bilingual (English - Vietnamese) Lockout/Tagout (LOTO) Standard Operating Procedures compliant with OSHA 29 CFR 1910.147, sealed with cryptographic SHA-256 hash signatures.
+3. **Asynchronous B2B Subcontracting:** Delivering turnkey technical codebases, SQL DDL schemas, and documentation packages 100% remotely without live meetings.
 
 ---
 
@@ -66,25 +64,31 @@ To maximize engineering precision, eliminate communication friction, and protect
 
 All engineering engagements, published codebases, and technical documentation strictly adhere to a four-tier legal and safety compliance framework:
 
-*   **100% NDA & Data Anonymization:** All codebases, database schemas, and technical articles utilize **Standard Reference Models (e.g., `FAC_GLOBAL_01`)**. No real-world plant names, proprietary line configurations, internal IP addresses, or confidential facility data are ever exposed or accepted.
-*   **Cryptographic Integrity (SHA-256):** Key digital assets, safety SOPs, and code payloads feature embedded SHA-256 hash signatures to verify author authenticity and prevent unauthorized tampering.
-*   **AI-Drafted Notice & Mandatory Field Sign-off:** Code snippets, database queries, and SOP drafts are produced using AI Co-pilot assistance under a strict **Human-in-the-Loop (HITL)** engineering workflow. **Mandatory Field Expert Sign-off:** All deliverables require formal review and approval by your qualified on-site Field Engineer prior to deployment on live PLC/SCADA/CMMS environments.
-*   **Merchant of Record (MoR) Tax Compliance:** International B2B digital asset licensing, custom pipeline deliverables, and subcontracting payments are processed through Merchant of Record platforms (LemonSqueezy / Paddle) for global tax compliance (VAT / Sales Tax).
+* **100% NDA & Data Anonymization:** All codebases, database schemas, and technical articles utilize **Standard Reference Models (e.g., `FAC_GLOBAL_01`)**. No real-world plant names, proprietary line configurations, internal IP addresses, or confidential facility data are ever exposed or accepted.
+* **Cryptographic Integrity (SHA-256):** Key digital assets, safety SOPs, and code payloads feature embedded SHA-256 hash signatures to verify author authenticity and prevent unauthorized tampering.
+* **AI-Drafted Notice & Mandatory Field Sign-off:** Code snippets, database queries, and SOP drafts are produced using AI Co-pilot assistance under a strict **Human-in-the-Loop (HITL)** engineering workflow. **Mandatory Field Expert Sign-off:** All deliverables require formal review and approval by your qualified on-site Field Engineer prior to deployment on live PLC/SCADA/CMMS environments.
+* **Merchant of Record (MoR) Tax Compliance:** International B2B digital asset licensing, custom pipeline deliverables, and subcontracting payments are processed through Merchant of Record platforms (LemonSqueezy / Paddle) for global tax compliance (VAT / Sales Tax).
 
 ---
 
-## 5. B2B Engagement Workflow (4 Steps)
+## 5. Open-Core Codebase Showcase (Proof-of-Work)
+
+You can directly inspect my anonymized Docker infrastructure, PostgreSQL DDL Schemas, and Python Cryptographic SHA-256 verification scripts on GitHub:
+
+👉 **Public Repository:** [Industrial OT Analytics Engine & SHA-256 Verification Demo](https://github.com/nguyentridung-ot/ot-analytics-engine-demo)
+
+---
+
+## 6. B2B Engagement Workflow & Screening Form
 
 Collaborating on a custom OT data pipeline or safety SOP packaging follows a structured four-step asynchronous workflow:
 
-1.  **Step 1 — Ticket Submission:** The partner submits project parameters and technical requirements via the B2B Technical Screening Form below.
-2.  **Step 2 — Technical Scope Analysis:** Scope evaluation, architecture selection, and fixed-milestone pricing are conducted within 24 hours via written communication.
-3.  **Step 3 — Asynchronous Execution & Delivery:** Production-ready codebases, Docker configurations, SQL schemas, and SOP packages are delivered via a private GitHub repository.
-4.  **Step 4 — Field Verification & Sign-off:** The client's on-site Field Engineer performs local staging validation and signs off prior to live production deployment.
+1. **Step 1 — Ticket Submission:** The partner submits project parameters and technical requirements via the B2B Technical Screening Form below.
+2. **Step 2 — Technical Scope Analysis:** Scope evaluation, architecture selection, and fixed-milestone pricing are conducted within 24 hours via written communication.
+3. **Step 3 — Asynchronous Execution & Delivery:** Production-ready codebases, Docker configurations, SQL schemas, and SOP packages are delivered via a private GitHub repository.
+4. **Step 4 — Field Verification & Sign-off:** The client's on-site Field Engineer performs local staging validation and signs off prior to live production deployment.
 
----
-
-## 6. Official B2B Async Technical Screening Form
+### Official B2B Async Technical Screening Form
 
 If your organization requires a custom Industrial OT Data Analytics Pipeline, OSHA-compliant LOTO SOP automation kit, or specialized B2B remote subcontracting, please complete the technical screening form below:
 
