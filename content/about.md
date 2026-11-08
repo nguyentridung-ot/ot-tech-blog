@@ -1,64 +1,92 @@
 ---
-title: "About Me | Nguyễn Trí Dũng"
-date: 2026-11-05
+title: "About Me & Operating Principles"
+date: 2026-11-07T00:00:00+07:00
 draft: false
-type: "page"
-description: "Hồ sơ Năng lực Chuyên gia OT & Quản trị Tài sản Bảo trì (SMRP BoK, OSHA LOTO SHA-256, OT Data Analytics Engine)."
+tags: ["Industrial OT", "Async-First", "Engineering Profile", "Legal-Tech", "B2B Subcontracting"]
+categories: ["Profile"]
+description: "Senior Industrial OT & Automation Specialist specializing in containerized OT data analytics pipelines, bilingual OSHA-compliant LOTO SOP automation, and 100% asynchronous B2B subcontracting."
+bookToc: true
 ---
 
-# Nguyễn Trí Dũng
+# About Me & Operating Principles
 
-**Remote Industrial OT & Asset Management Specialist**
+## 1. Executive Profile & Engineering Identity
 
-*Mô hình vận hành: 100% Asynchronous (Async-First) | Proof-of-Work Driven*
+Welcome. I am **Nguyễn Trí Dũng**, a Senior Industrial Operational Technology (OT) & Automation Specialist with over a decade of hands-on field experience in industrial manufacturing environments, PLC/SCADA integration, process control optimization, and equipment reliability engineering. 
+
+My engineering practice bridges the gap between field-level industrial hardware and modern enterprise data architectures. By pairing domain expertise in industrial operations with open-source software stacks (Docker, PostgreSQL Time-Series, Grafana), I help industrial enterprises, plant directors, and engineering teams transform raw machine downtime logs into verifiable reliability intelligence and automated safety compliance SOPs.
+
+### Core Engineering Operating Spectrum
+
+*   **Field Hardware & Protocol Layer:** Siemens S7-1200/1500, Allen-Bradley Logix, Mitsubishi PLCs, OPC-UA Gateways, Modbus TCP, and Industrial IoT MQTT brokers.
+*   **Data Pipelines & Storage Layer:** Python async data workers, containerized PostgreSQL time-series databases, automated MTTR/MTBF aggregation, and MOP V7 technical debt scoring engines.
+*   **Enterprise Control Room & Visualization Layer:** Grafana Control Room dashboards, native SQL analytics views, plant availability metrics, and downtime root-cause tracking.
+
+### Core Specializations
+
+1.  **Industrial OT Analytics Architecture:** Engineering containerized, 1-Click deployable data ingestion pipelines for downtime monitoring and equipment technical debt tracking.
+2.  **Industrial Safety & Compliance Automation:** Designing bilingual (English - Vietnamese) Lockout/Tagout (LOTO) Standard Operating Procedures compliant with OSHA 29 CFR 1910.147, sealed with cryptographic SHA-256 hash signatures.
+3.  **Asynchronous B2B Subcontracting:** Delivering turnkey technical codebases, SQL DDL schemas, and documentation packages 100% remotely without live meetings.
 
 ---
 
-## 1. Tóm tắt Năng lực Chuyên môn (Executive Summary)
+## 2. High-Moat Technical Competencies
 
-Tôi là Kỹ sư Vận hành & Bảo trì OT (Operational Technology) với khí chất làm việc cẩn trọng, hệ thống và kỷ luật cao (ISTJ / DISC C >65% & D). Tôi tập trung giải quyết các bài toán kỹ thuật nhà máy phức tạp thông qua đòn bẩy công nghệ và phương thức làm việc dựa trên bằng chứng kỹ thuật (*Proof-of-Work*):
+My technical stack is selected specifically for long-term operational resilience, low maintenance overhead, and zero vendor lock-in.
 
-*   **Quản trị Bảo trì Hiện đại (SMRP BoK)**: Phân tích và tối ưu hóa 5 trụ cột kiến thức SMRP, đo lường các chỉ số vận hành cốt lõi (MTTR, MTBF, Availability %) và mô hình hóa chỉ số Nợ kỹ thuật (*Technical Debt Score MOP V7*).
-*   **Chuẩn hóa An toàn LOTO chuẩn OSHA**: Xây dựng và đóng gói bộ quy trình an toàn cách ly năng lượng (LOTO) song ngữ Anh - Việt tuân thủ nghiêm ngặt tiêu chuẩn **OSHA 29 CFR 1910.147**, niêm phong tính toàn vẹn dữ liệu bằng thuật toán mật mã **Cryptographic SHA-256**.
-*   **Hạ tầng Dữ liệu OT & Control Room**: Thiết kế pipeline dữ liệu xử lý sự cố dừng máy thời gian thực trên nền tảng **PostgreSQL Schema / Python Data Pipelines** và trực quan hóa hệ thống giám sát trên **Grafana Control Room Dashboard**.
-
----
-
-## 2. Trụ cột Kỹ thuật & Bằng chứng Thực thi (Proof-of-Work Repository)
-
-| Trụ cột Kỹ thuật | Công nghệ & Tiêu chuẩn | Bằng chứng Thực thi (High-Moat Deliverables) |
+| Infrastructure Layer | Technology Stack | Primary Function & Engineering Application |
 | :--- | :--- | :--- |
-| **Industrial OT Analytics Engine** | PostgreSQL Schema, Python, Grafana, Docker | Bộ hạ tầng mã nguồn mở rộng xử lý dữ liệu dừng máy & Grafana Control Room Dashboard |
-| **OT Safety & Compliance** | OSHA 29 CFR 1910.147, Cryptographic SHA-256 | Thư viện LOTO SOPs Song ngữ Anh - Việt nhúng mã băm xác thực tính toàn vẹn |
-| **Asset Reliability Management** | SMRP BoK, RCA (5-Why, Fishbone), TPM | Hệ thống đo lường MTTR, MTBF, Availability % & Technical Debt Engine |
-| **CMMS Integration & Automation** | JSON Payloads, Python, Git, Markdown | Bộ CMMS Payloads chuẩn hóa cho SAP PM & IBM Maximo API |
+| **Edge & Data Ingestion** | Python 3.12, Docker Compose, OPC-UA, MQTT | Lightweight edge workers for parsing industrial machine logs and sensor telemetry. |
+| **Time-Series Database** | PostgreSQL 16, Materialized Views, SQL DDL | Structured downtime event storage, automated MTTR/MTBF aggregation, and MOP V7 scoring. |
+| **Control Room Dashboards** | Grafana Control Room, Native SQL Queries | Real-time plant availability dashboards, downtime root-cause analysis, and equipment status tracking. |
+| **Safety & Compliance** | OSHA 29 CFR 1910.147, Python Cryptography | Bilingual LOTO SOP generation with SHA-256 integrity verification and CMMS API payload integration. |
+| **Storefront & Delivery** | Hugo SSG, GitHub Pages, GitHub Actions | Zero-cost, high-speed technical documentation storefront and public Proof-of-Work repository. |
 
 ---
 
-## 3. Nguyên tắc Bảo mật & Tuân thủ NDA (NDA & Risk Filtering)
+## 3. The 100% Async-First & Zero-Meeting Operating Framework
 
-Nhằm đảm bảo tuyệt đối nghĩa vụ bảo mật thông tin và tuân thủ các quy định pháp lý:
+To maximize engineering precision, eliminate communication friction, and protect focused technical time, I operate exclusively under a **100% Asynchronous (Zero-Meeting) Policy**.
 
-*   **Vô danh hóa 100% dữ liệu thực địa**: Mọi cấu trúc Schema, pipeline dữ liệu hay biểu đồ demo trên website tuyệt đối không sử dụng log hay tên thiết bị thực tế, chỉ dùng dữ liệu giả lập chuẩn (*Reference Model*).
-*   **Cơ chế Human-in-the-Loop & SHA-256**: Mọi quy trình SOPs phát hành đều nhúng nhãn *AI-Drafted Notice*, mã băm Cryptographic SHA-256 và bắt buộc có chữ ký duyệt thực địa của chuyên gia con người trước khi đưa vào vận hành.
+### Comparative Operating Efficiency
+
+| Operating Dimension | Traditional Consulting Model | 100% Async-First Engineering Model |
+| :--- | :--- | :--- |
+| **Communication Mode** | Live Zoom/Teams meetings, phone calls, on-site visits | Written specifications via Slack, Jira, GitHub, or Email |
+| **Response Latency** | Interruptive real-time demands; fragmented focus | Structured 24-hour response window; high-concentration blocks |
+| **Requirement Traceability** | Verbal agreements; lost meeting context | 100% version-controlled, audit-ready written specifications |
+| **Language Protocol** | Real-time verbal discussion | Professional Technical English (B2+ level) via written text |
+| **Execution Output** | Advisory opinions and slide presentations | Production-ready code, SQL DDLs, Docker setups, and SOPs |
+
+> **Policy Notice:** I do not participate in live video calls, phone consultations, or on-site physical meetings. All technical inquiries, project scopes, and engineering deliverables are handled 100% asynchronously through written documentation.
 
 ---
 
-## 4. Tuyên ngôn Tương tác Bất đồng bộ (Async-First Protocol)
+## 4. Legal-Tech Safeguards & Compliance Framework
 
-Nhằm duy trì sự tập trung chuyên môn cao nhất và bảo đảm chất lượng bàn giao kỹ thuật, tôi áp dụng **Quy trình làm việc Bất đồng bộ 100% (Async-First Protocol)**:
+All engineering engagements, published codebases, and technical documentation strictly adhere to a four-tier legal and safety compliance framework:
 
-*   ❌ **Zero Live Meetings**: Loại bỏ 100% các cuộc họp trực tiếp, thảo luận không có chương trình nghị sự chuẩn hóa hoặc dịch vụ chào hàng/tư vấn thủ công.
-*   📝 **Text & Ticket Driven**: Mọi trao đổi bài toán kỹ thuật, báo cáo tiến độ và bàn giao codebase được thực hiện hoàn toàn bằng Tiếng Anh qua **Slack, Jira, GitHub Issues, Email** dưới sự hỗ trợ của AI Co-pilot.
-*   ⏱️ **SLA Phản hồi**: Mọi Ticket kiểm tra kỹ thuật (*Technical Screening*) từ đối tác B2B sẽ được phân tích và phản hồi giải pháp trong vòng **24 giờ làm việc**.
+*   **100% NDA & Data Anonymization:** All codebases, database schemas, and technical articles utilize **Standard Reference Models (e.g., `FAC_GLOBAL_01`)**. No real-world plant names, proprietary line configurations, internal IP addresses, or confidential facility data are ever exposed or accepted.
+*   **Cryptographic Integrity (SHA-256):** Key digital assets, safety SOPs, and code payloads feature embedded SHA-256 hash signatures to verify author authenticity and prevent unauthorized tampering.
+*   **AI-Drafted Notice & Mandatory Field Sign-off:** Code snippets, database queries, and SOP drafts are produced using AI Co-pilot assistance under a strict **Human-in-the-Loop (HITL)** engineering workflow. **Mandatory Field Expert Sign-off:** All deliverables require formal review and approval by your qualified on-site Field Engineer prior to deployment on live PLC/SCADA/CMMS environments.
+*   **Merchant of Record (MoR) Tax Compliance:** International B2B digital asset licensing, custom pipeline deliverables, and subcontracting payments are processed through Merchant of Record platforms (LemonSqueezy / Paddle) for global tax compliance (VAT / Sales Tax).
 
 ---
 
-## 5. Tiếp nhận Yêu cầu Hợp tác B2B (Async Technical Screening)
+## 5. B2B Engagement Workflow (4 Steps)
 
-Nếu tổ chức hoặc doanh nghiệp quốc tế của bạn cần thầu phụ/chuyên gia độc lập về **Chuẩn hóa LOTO SOPs SHA-256** hoặc **Thiết kế OT Analytics Engine**:
+Collaborating on a custom OT data pipeline or safety SOP packaging follows a structured four-step asynchronous workflow:
 
-> 📌 **Vui lòng gửi mô tả bài toán kỹ thuật qua Form bên dưới. Tôi sẽ nghiên cứu hồ sơ và phản hồi giải pháp qua Email/Jira Ticket trong vòng 24 giờ.**
+1.  **Step 1 — Ticket Submission:** The partner submits project parameters and technical requirements via the B2B Technical Screening Form below.
+2.  **Step 2 — Technical Scope Analysis:** Scope evaluation, architecture selection, and fixed-milestone pricing are conducted within 24 hours via written communication.
+3.  **Step 3 — Asynchronous Execution & Delivery:** Production-ready codebases, Docker configurations, SQL schemas, and SOP packages are delivered via a private GitHub repository.
+4.  **Step 4 — Field Verification & Sign-off:** The client's on-site Field Engineer performs local staging validation and signs off prior to live production deployment.
+
+---
+
+## 6. Official B2B Async Technical Screening Form
+
+If your organization requires a custom Industrial OT Data Analytics Pipeline, OSHA-compliant LOTO SOP automation kit, or specialized B2B remote subcontracting, please complete the technical screening form below:
 
 <iframe data-tally-src="https://tally.so/embed/M1DrPA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1158" frameborder="0" marginheight="0" marginwidth="0" title="B2B Async Technical Screening Form"></iframe>
 <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
