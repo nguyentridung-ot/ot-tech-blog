@@ -1,1 +1,29 @@
-@echo off chcp 65001 &gt;nul :: ==================================================================== :: Hugo Auto Deploy Script for Windows (1-Click Git Push) :: Target: E:\\12\_Web\\ot-tech-blog\\ :: ==================================================================== echo ==================================================================== echo HUGO AUTOMATED DEPLOYMENT TOOL - 1-CLICK GIT PUSH echo ==================================================================== echo [1/3] Staging all changed files... git add . set "commit\_msg=%\~1" if "%commit\_msg%"=="" ( for /f "tokens=2 delims==" %%i in ('wmic os get localdatetime /value 2^&gt;nul') do set datetime=%%i if defined datetime ( set "timestamp=!datetime:\~0,4!-!datetime:\~4,2!-!datetime:\~6,2! !datetime:\~8,2!:!datetime:\~10,2!" set "commit\_msg=Auto-deploy Hugo content update: !timestamp!" ) else ( set "commit\_msg=Auto-deploy Hugo content update: %date% %time%" ) ) echo [2/3] Committing changes with message: "%commit\_msg%" git commit -m "%commit\_msg%" echo [3/3] Pushing to GitHub repository (origin main)... git push origin main if %ERRORLEVEL% EQU 0 ( echo. echo ==================================================================== echo [SUCCESS] Hugo site update successfully pushed to GitHub Pages! echo ==================================================================== ) else ( echo. echo ==================================================================== echo [ERROR] Git push failed. Please check your network or credentials. echo ==================================================================== )
+@echo off
+chcp 65001 >nul
+echo ====================================================================
+echo HUGO AUTOMATED DEPLOYMENT TOOL - 1-CLICK GIT PUSH
+echo ====================================================================
+
+echo [1/3] Staging all changed files...
+git add .
+
+echo [2/3] Committing changes...
+git commit -m "Update Hugo site content"
+
+echo [3/3] Pushing to GitHub repository (origin main)...
+git push origin main
+
+if %errorlevel% neq 0 (
+    echo.
+    echo ====================================================================
+    echo [ERROR] Push failed! Please check your network or Git settings.
+    echo ====================================================================
+    pause
+    exit /b %errorlevel%
+)
+
+echo.
+echo ====================================================================
+echo [SUCCESS] Hugo site update successfully pushed to GitHub Pages!
+echo ====================================================================
+pause
