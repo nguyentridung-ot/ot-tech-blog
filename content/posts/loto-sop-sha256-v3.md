@@ -43,7 +43,7 @@ The table below provides a consolidated overview of the 5 production-ready LOTO 
 * **Hazardous Energy Types:** 400VAC 3-Phase Main Power and Stored DC Bus Capacitor Residual Charge (500–800VDC).
 * **Key Protocol Highlight:** Mandatory 5-minute wait time post-de-energization to allow internal bleeder resistors to discharge DC bus capacitors below 50VDC. Zero Energy State verified via CAT IV multimeter across L1-L2-L3 (<50VAC) and DC (+/-) bus terminals.
 * **Cryptographic Signature:** `da79d4cb758467bc468c5de458c3ad50b2c7d873862ea8590752ce872f5e6a54`
-* **Access Full Module:** [`loto-elec-01-vfd-mcc.md`](./loto-elec-01-vfd-mcc.md)
+* **Access Full Module:** [`loto-elec-01-vfd-mcc.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-01-vfd-mcc/)
 
 ### 3.2. LOTO-ELEC-02: Central PLC/SCADA Cabinet & Servo Drive Power Isolation SOP
 * **Target Equipment:** Programmable Logic Controller Cabinets (Siemens S7-1500 / Allen-Bradley ControlLogix), 24VDC Power Supplies, Remote I/O Racks, and Multi-Axis Servo Drives.
