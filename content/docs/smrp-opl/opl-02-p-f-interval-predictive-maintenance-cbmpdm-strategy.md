@@ -11,11 +11,11 @@ bookToc: true
 weight: 2
 ---
 
-{{< hint info >}}
+{{% hint info %}}
 🔒 **SECURITY & INTEGRITY CHECKSUM (SHA-256):**  
 `SHA256: e065a8c47995b1d6bcd8423b7d628460f020e8251e800ad794bf85d05b7cd239`  
 🌐 *Reference Model: `FAC_GLOBAL_02`. Zero NDA Risk Protocol.*
-{{< /hint >}}
+{{% /hint %}}
 
 ---
 
@@ -34,9 +34,11 @@ weight: 2
 
 ### 📐 2. Mathematical Formulation & Micro Payload
 
+{{< katex display=true >}}
 \[
 I_{\text{inspection}} \le \frac{\text{P-F Interval}}{2}
 \]
+{{< /katex >}}
 
 ```python
 # P-F Interval Inspection Scheduler (Reference Model: FAC_GLOBAL_02)
@@ -72,23 +74,24 @@ print(pdm_plan)
 > - **C.** Every 10 to 15 days
 > - **D.** Only when bearing temperature exceeds 80°C
 
-{{< details "Click to reveal Answer & Rationale" >}}
+{{% details "Click to reveal Answer & Rationale" %}}
 - **Correct Answer:** **C**
-- **SMRP Rationale:** SMRP best practices dictate that CBM inspection intervals must not exceed half of the P-F Interval (\(I \le \frac{\text{P-F}}{2} = 15\text{ days}\)). An inspection interval of 10 to 15 days provides at least one full inspection opportunity within the safety window. Options A and B risk missing the failure entirely, while temperature rise (Option D) occurs near the very end of the P-F curve adjacent to Point \(F\).
-{{< /details >}}
+- **SMRP Rationale:** SMRP best practices dictate that CBM inspection intervals must not exceed half of the P-F Interval {{< katex display=true >}} (\(I \le \frac{\text{P-F}}{2} = 15\text{ days}\)) {{< /katex >}}. An inspection interval of 10 to 15 days provides at least one full inspection opportunity within the safety window. Options A and B risk missing the failure entirely, while temperature rise (Option D) occurs near the very end of the P-F curve adjacent to Point \(F\).
+{{% /details %}}
 
 ---
 
 ### 🎯 4. Industrial OT Actionable Checklist
 
 - [ ] **Step 1:** Map applicable PdM technologies (Vibration, Infrared, Oil Analysis, Ultrasound) to specific failure modes.
-- [ ] **Step 2:** Build a P-F Interval matrix across critical equipment assets and establish inspection cycles \(I \le \frac{\text{P-F}}{2}\).
+- [ ] **Step 2:** Build a P-F Interval matrix across critical equipment assets and establish inspection cycles {{< katex display=true >}} \(I \le \frac{\text{P-F}}{2}\).{{< /katex >}}
 - [ ] **Step 3:** Trigger an automated Planned Work Order in CMMS upon Point \(P\) detection to perform corrective action within the Reliability Window.
 
 ---
 
-{{< hint warning >}}
-### 🚀 Need Industrial OT & Reliability Consulting?
+{{% hint warning %}}
+**🚀 Need Industrial OT & Reliability Consulting?**
 Looking to deploy automated Condition-Based Monitoring (CBM) integrated with IoT sensors and CMMS?  
-👉 **[Submit B2B Technical Request Here](/#tally-form-anchor)**.
-{{< /hint >}}
+👉 **[Submit B2B Technical Request Here]({{< relref "/" >}}#tally-form-anchor)** *(Async response via Slack/Jira/Email in Technical English)*.
+{{% /hint %}}
+
