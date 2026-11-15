@@ -1,3 +1,16 @@
 [module]
-[module.hugoVersion]
-  min = "0.158.0"
+  [module.hugoVersion]
+    min = "0.158.0"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # Cho phép render thẻ <details> và <summary> của phần CMRP Quiz
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        # Bảo vệ công thức LaTeX khỏi bị Goldmark biến dạng dấu _ và \
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]

@@ -1,18 +1,19 @@
 ---
 title: "OPL #01: Equipment Availability, MTBF & MTTR Standard Calculations"
-date: 2026-11-14T08:00:00+07:00
-draft: true
-slug: "opl-01-equipment-availability-mtbf-mttr"
+date: 2026-11-15T08:00:00+07:00
+draft: false
+slug: "opl-01-equipment-availability-mtbf-mttr-standard-calculations"
 tags: ["OPL", "CMRP", "SMRP-BoK", "Industrial-OT", "Equipment-Reliability"]
 categories: ["One-Point Lessons"]
 series: ["SMRP Body of Knowledge"]
 description: "SMRP BoK One-Point Lesson: Key mathematical formulation and implementation for Equipment Availability, MTBF, and MTTR."
 bookToc: true
+weight: 1
 ---
 
 {{< hint info >}}
 🔒 **SECURITY & INTEGRITY CHECKSUM (SHA-256):**  
-`SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`  
+`SHA256: 8caceca0b8e022ad1f5b7ea1790254b5063e1da4f1ced151ccc6a3c795073f98`  
 🌐 *Reference Model: `FAC_GLOBAL_01`. Zero NDA Risk Protocol.*
 {{< /hint >}}
 
@@ -33,9 +34,9 @@ bookToc: true
 
 ### 📐 2. Mathematical Formulation & Micro Payload
 
-\\[
+\[
 A = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}} \times 100\% = \frac{T_{\text{operating}} - T_{\text{downtime}}}{T_{\text{operating}}} \times 100\%
-\\]
+\]
 
 ```python
 # Industrial OT Quick-Calculations (Reference Model: FAC_GLOBAL_01)
