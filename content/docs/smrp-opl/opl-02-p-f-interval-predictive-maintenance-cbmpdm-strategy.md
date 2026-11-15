@@ -2,7 +2,7 @@
 title: "OPL #02: P-F Interval & Predictive Maintenance (CBM/PdM) Strategy"
 weight: 2
 date: 2026-11-15T09:29:00+07:00
-lastmod: 2026-11-15T09:30:05+07:00
+lastmod: 2026-11-15T09:35:40+07:00
 draft: false
 slug: "opl-02-p-f-interval-predictive-maintenance-cbmpdm-strategy"
 tags: ["OPL", "CMRP", "SMRP-BoK", "P-F-Interval", "Predictive-Maintenance", "CBM"]
