@@ -16,6 +16,8 @@ weight: 1
 `SHA256: 8caceca0b8e022ad1f5b7ea1790254b5063e1da4f1ced151ccc6a3c795073f98`  
 🌐 *Reference Model: `FAC_GLOBAL_01`. Zero NDA Risk Protocol.*
 {{< /hint >}}
+{{< katex >}}{{< /katex >}}
+
 
 ---
 
@@ -93,5 +95,6 @@ print(results)
 {{< hint warning >}}
 ### 🚀 Need Industrial OT & Reliability Consulting?
 Looking to package OT Downtime Dashboards or standardize SMRP-compliant Maintenance Workflows?  
-👉 **[Submit B2B Technical Request Here](/#tally-form-anchor)** *(Async response via Slack/Jira/Email in Technical English)*.
+👉 **[Submit B2B Technical Request Here]({{< relref "/" >}}#tally-form-anchor)**
+
 {{< /hint >}}
