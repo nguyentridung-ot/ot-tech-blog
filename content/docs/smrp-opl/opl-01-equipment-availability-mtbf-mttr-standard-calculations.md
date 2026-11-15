@@ -38,9 +38,12 @@ weight: 1
 
 ### 📐 2. Mathematical Formulation & Micro Payload
 
-\[
+{{< katex >}}{{< /katex >}}
+
+$$
 A = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}} \times 100\% = \frac{T_{\text{operating}} - T_{\text{downtime}}}{T_{\text{operating}}} \times 100\%
-\]
+$$
+
 
 ```python
 # Industrial OT Quick-Calculations (Reference Model: FAC_GLOBAL_01)
