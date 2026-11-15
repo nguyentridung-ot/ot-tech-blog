@@ -38,11 +38,9 @@ weight: 1
 
 ### 📐 2. Mathematical Formulation & Micro Payload
 
-{{< katex >}}{{< /katex >}}
-
-$$
+{{< katex display=true >}}
 A = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}} \times 100\% = \frac{T_{\text{operating}} - T_{\text{downtime}}}{T_{\text{operating}}} \times 100\%
-$$
+{{< /katex >}}
 
 
 ```python
@@ -82,10 +80,11 @@ print(results)
 > - **C.** MTBF = 174.0 hrs, Availability = 95.00%
 > - **D.** MTBF = 180.0 hrs, Availability = 95.00%
 
-{{< details "Click to reveal Answer & Rationale" >}}
+{{% details "Click to reveal Answer & Rationale" %}}
 - **Correct Answer:** **B**
-- **SMRP Rationale:** SMRP defines MTBF strictly on actual operating uptime (\(T_{\text{operating}} - T_{\text{downtime}}\)). Uptime = \(720 - 24 = 696\) hours. Therefore, \(\text{MTBF} = \frac{696}{4} = 174.0\) hours. Operational Availability \(A = \left(\frac{696}{720}\right) \times 100\% = 96.67\%\). Option A incorrectly utilizes gross scheduled hours (\(720/4 = 180\)) without subtracting downtime.
-{{< /details >}}
+- **SMRP Rationale:** SMRP defines MTBF strictly on actual operating uptime ({{< katex >}}T_{\text{operating}} - T_{\text{downtime}}{{< /katex >}}). Uptime = {{< katex >}}720 - 24 = 696{{< /katex >}} hours. Therefore, {{< katex >}}\text{MTBF} = \frac{696}{4} = 174.0{{< /katex >}} hours. Operational Availability {{< katex >}}A = \left(\frac{696}{720}\right) \times 100\% = 96.67\%{{< /katex >}}. Option A incorrectly utilizes gross scheduled hours ({{< katex >}}720/4 = 180{{< /katex >}}) without subtracting downtime.
+{{% /details %}}
+
 
 ---
 
