@@ -1,5 +1,5 @@
 baseURL: "https://nguyentridung-ot.github.io/ot-tech-blog/"
-languageCode: "vi-vn"
+locale: "vi-VN"
 title: "Nguyễn Trí Dũng | Industrial OT & Asset Management"
 theme: "hugo-book"
 

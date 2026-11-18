@@ -40,7 +40,7 @@ This portal is structured around **4 core engineering pillars**, each representi
 * **Focus:** Containerized data pipeline architecture for downtime reduction, MTTR/MTBF metrics, and MOP V7 Technical Debt calculation.
 * **Tech Stack:** Docker Compose, PostgreSQL 16 (Time-Series DDL & Materialized Views), Grafana Control Room Dashboards, Python 3.12 Ingestion Workers.
 * **Key Article:** [Industrial OT Analytics Engine – Architecture & Implementation Guide](https://nguyentridung-ot.github.io/ot-tech-blog/posts/industrial-ot-analytics-engine-v2/)
-* **SMRP-BoK OPL Series:** [SMRP One-Point Lessons – Reliability & KPI Standards]({{< relref "/docs/smrp-opl" >}})
+* **SMRP-BoK OPL Series:** [SMRP One-Point Lessons – Reliability & KPI Standards]({{< relref "/docs/01-smrp-bok" >}})
 
 ### 📍 Pillar 2: Bilingual Safety & LOTO SOPs Framework (SHA-256 Sealed)
 * **Focus:** Production-grade Lockout/Tagout procedures compliant with OSHA 29 CFR 1910.147, featuring bilingual (English - Vietnamese) action matrices, STAR verification tests, and automated CMMS API integration.
