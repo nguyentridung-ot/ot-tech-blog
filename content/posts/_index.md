@@ -1,5 +1,5 @@
 ---
-title: "📚 Bài viết Kỹ thuật (Posts)"
+title: "📚 Technical Articles (Posts)"
 weight: 90
 ---
-Các bài viết kỹ thuật và quy tắc vận hành làm việc bất đồng bộ.
+Technical articles and asynchronous working guidelines.
