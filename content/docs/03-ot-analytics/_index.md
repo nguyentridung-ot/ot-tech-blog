@@ -4,4 +4,4 @@ weight: 10
 bookFlatSection: true 
 bookCollapseSection: true
 ---
-Kiến trúc và hướng dẫn triển khai Industrial OT Analytics Engine (Docker, PostgreSQL, Grafana).
+Architecture and deployment guide for the Industrial OT Analytics Engine (Docker, PostgreSQL, Grafana).
