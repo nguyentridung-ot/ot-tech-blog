@@ -4,4 +4,4 @@ weight: 10
 bookFlatSection: true 
 bookCollapseSection: true
 ---
-Các bài học 1 điểm (OPL) đúc kết theo 5 trụ cột chuẩn SMRP BoK.
+One-Point Lessons (OPLs) structured around the 5 pillars of the SMRP BoK.
