@@ -1,4 +1,6 @@
 baseURL: "https://nguyentridung-ot.github.io/ot-tech-blog/"
+canonifyURLs: true
+relativeURLs: true
 locale: "vi-vn"
 title: "Nguyễn Trí Dũng | Industrial OT & Asset Management"
 theme: "hugo-book"
@@ -23,3 +25,14 @@ markup:
   goldmark: 
     renderer: 
       unsafe: true
+
+permalinks:
+  docs:
+    01-smrp-bok: 
+      pillar-1-business: "/smrp/p1/:slug/"
+      pillar-2-process: "/smrp/p2/:slug/"
+      pillar-3-equipment: "/smrp/p3/:slug/"
+      pillar-4-organization: "/smrp/p4/:slug/"
+      pillar-5-work-mgmt: "/smrp/p5/:slug/"
+    02-loto-standards: "/loto/:slug/"
+    03-ot-analytics: "/ot-engine/:slug/"

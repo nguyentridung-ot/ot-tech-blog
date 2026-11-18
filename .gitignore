@@ -1,0 +1,6 @@
+.env
+*.log
+*.csv
+public/
+resources/_gen/
+.hugo_build.lock
