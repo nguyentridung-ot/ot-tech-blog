@@ -28,11 +28,11 @@ The table below provides a consolidated overview of the 5 production-ready LOTO 
 
 | SOP ID | Equipment Category & Title (EN / VI) | Controlled Energy Parameters | Cryptographic SHA-256 Hash Seal | Target CMMS Schema | Source Artifact File |
 | :---: | :--- | :--- | :--- | :--- | :--- |
-| **LOTO-ELEC-01** | **VFD & MCC 400VAC Isolation**<br>*(Cô lập Biến tần VFD & Tủ động lực MCC)* | 400VAC 3-Phase Electrical<br>DC Bus Capacitor (500–800VDC) | `da79d4cb758467bc468c5de458c3ad50b2c7d873862ea8590752ce872f5e6a54` | SAP PM / IBM Maximo | [`loto-elec-01-vfd-mcc.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-01-vfd-mcc/) |
-| **LOTO-ELEC-02** | **PLC/SCADA & Servo Drive Power**<br>*(Cô lập Tủ PLC/SCADA & Nguồn Servo)* | 230VAC Control / 24VDC Bus<br>400VAC Servo / UPS Auxiliary | `94cb8cf90e91b8be6d38e23f009e530b147ea41ad9c3bcecb02b66d0ef06eb3c` | SAP PM / IBM Maximo | [`loto-elec-02-plc-scada.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-02-plc-scada/) |
-| **LOTO-ELEC-03** | **Capacitor Bank & UPS Discharge**<br>*(Cô lập & Xả tụ bù 300 kVAR & UPS)* | 400VAC Feeder / 690V Peak Cap<br>384VDC UPS Battery Bank | `29fc12270877043fe429dcdfa439eb62dcbdad52f8646b96e6d15c7e4fa16fa2` | SAP PM / IBM Maximo | [`loto-elec-03-capacitor-ups.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-03-capacitor-ups/) |
-| **LOTO-ELEC-04** | **Substation & MV Switchgear 22kV**<br>*(Cô lập Trạm 22kV & Tủ trung thế VCB)* | 22,000VAC High Voltage<br>400VAC Low Voltage Busbar | `f41c364dd5e0dabbf15f01e6a1789c09c3726fb51dbfc42f618fc6f54c9ffba8` | SAP PM / IBM Maximo | [`loto-elec-04-substation-mv.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-04-substation-mv/) |
-| **LOTO-ELEC-05** | **Electric Heating Element 180kW**<br>*(Cô lập Dàn sấy điện trở 180kW)* | 400VAC 3-Phase Heating<br>Thermal Energy (>200°C) | `df29de46e32701487ea0bcfbe8df261bb22f8721c57221df75fe334465b8df79` | SAP PM / IBM Maximo | [`loto-elec-05-electric-heating.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-05-electric-heating/) |
+| **LOTO-ELEC-01** | **VFD & MCC 400VAC Isolation**<br>*(Cô lập Biến tần VFD & Tủ động lực MCC)* | 400VAC 3-Phase Electrical<br>DC Bus Capacitor (500–800VDC) | `da79d4cb758467bc468c5de458c3ad50b2c7d873862ea8590752ce872f5e6a54` | SAP PM / IBM Maximo | [`loto-elec-01-vfd-mcc.md`]({{< relref "/docs/02-loto-standards/loto-elec-01-vfd-mcc" >}}) |
+| **LOTO-ELEC-02** | **PLC/SCADA & Servo Drive Power**<br>*(Cô lập Tủ PLC/SCADA & Nguồn Servo)* | 230VAC Control / 24VDC Bus<br>400VAC Servo / UPS Auxiliary | `94cb8cf90e91b8be9ec7a167d9fbf52fe1571f1b170ff66cccdfc588cbda4b92` | SAP PM / IBM Maximo | [`loto-elec-02-plc-scada.md`]({{< relref "/docs/02-loto-standards/loto-elec-02-plc-scada" >}}) |
+| **LOTO-ELEC-03** | **Capacitor Bank & UPS Discharge**<br>*(Cô lập & Xả tụ bù 300 kVAR & UPS)* | 400VAC Feeder / 690V Peak Cap<br>384VDC UPS Battery Bank | `29fc12270877043f8b61d690b24e82f1780742afdb5a96cd88915a40ceae0c6b` | SAP PM / IBM Maximo | [`loto-elec-03-capacitor-ups.md`]({{< relref "/docs/02-loto-standards/loto-elec-03-capacitor-ups" >}}) |
+| **LOTO-ELEC-04** | **Substation & MV Switchgear 22kV**<br>*(Cô lập Trạm 22kV & Tủ trung thế VCB)* | 22,000VAC High Voltage<br>400VAC Low Voltage Busbar | `f41c364dd5e0dabbfd22411b02e8bdda37b445d878076700c130046d4eca4e12` | SAP PM / IBM Maximo | [`loto-elec-04-substation-mv.md`]({{< relref "/docs/02-loto-standards/loto-elec-04-substation-mv" >}}) |
+| **LOTO-ELEC-05** | **Electric Heating Element 180kW**<br>*(Cô lập Dàn sấy điện trở 180kW)* | 400VAC 3-Phase Heating<br>Thermal Energy (>200°C) | `df29de46e3270148391e29cedabce411a1d46404311adfbea2006aa86e61c2b3` | SAP PM / IBM Maximo | [`loto-elec-05-electric-heating.md`]({{< relref "/docs/02-loto-standards/loto-elec-05-electric-heating" >}}) |
 
 ---
 
@@ -43,35 +43,35 @@ The table below provides a consolidated overview of the 5 production-ready LOTO 
 * **Hazardous Energy Types:** 400VAC 3-Phase Main Power and Stored DC Bus Capacitor Residual Charge (500–800VDC).
 * **Key Protocol Highlight:** Mandatory 5-minute wait time post-de-energization to allow internal bleeder resistors to discharge DC bus capacitors below 50VDC. Zero Energy State verified via CAT IV multimeter across L1-L2-L3 (<50VAC) and DC (+/-) bus terminals.
 * **Cryptographic Signature:** `da79d4cb758467bc468c5de458c3ad50b2c7d873862ea8590752ce872f5e6a54`
-* **Access Full Module:** [`loto-elec-01-vfd-mcc.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-01-vfd-mcc/)
+* **Access Full Module:** [`loto-elec-01-vfd-mcc.md`]({{< relref "/docs/02-loto-standards/loto-elec-01-vfd-mcc" >}})
 
 ### 3.2. LOTO-ELEC-02: Central PLC/SCADA Cabinet & Servo Drive Power Isolation SOP
 * **Target Equipment:** Programmable Logic Controller Cabinets (Siemens S7-1500 / Allen-Bradley ControlLogix), 24VDC Power Supplies, Remote I/O Racks, and Multi-Axis Servo Drives.
 * **Hazardous Energy Types:** 230VAC PID/Control Supply, 24VDC Auxiliary Logic Bus, 400VAC Servo Drive Power, and Uninterruptible Power Supply (UPS) Battery Power.
 * **Key Protocol Highlight:** Dual-isolation protocol requiring disconnect of main 220VAC breakers, key-switch lockout on HMI control mode, and physical disengagement of dedicated UPS feed. Zero Energy State confirmed when all CPU status LEDs extinguish and 24VDC bus drops to 0.0VDC.
-* **Cryptographic Signature:** `94cb8cf90e91b8be6d38e23f009e530b147ea41ad9c3bcecb02b66d0ef06eb3c`
-* **Access Full Module:** [`loto-elec-02-plc-scada.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-02-plc-scada/)
+* **Cryptographic Signature:** `94cb8cf90e91b8be9ec7a167d9fbf52fe1571f1b170ff66cccdfc588cbda4b92`
+* **Access Full Module:** [`loto-elec-02-plc-scada.md`]({{< relref "/docs/02-loto-standards/loto-elec-02-plc-scada" >}})
 
 ### 3.3. LOTO-ELEC-03: Industrial Capacitor Bank & UPS Residual Energy Discharge SOP
 * **Target Equipment:** Automatic Power Factor Correction (PFC) Capacitor Banks (300 kVAR) and Centralized Industrial UPS Systems (100kVA).
 * **Hazardous Energy Types:** 400VAC High-Amperage Feeder Power, High-Voltage Electrostatic Charge in Capacitor Cells (Up to 690V peak), and 384VDC Battery String Power.
 * **Key Protocol Highlight:** Mandatory 10-minute automated resistor discharge followed by manual earthing rod application to clamp capacitor terminals to ground. Zero Energy State confirmed when terminal-to-earth differential reads 0VDC/VAC.
-* **Cryptographic Signature:** `29fc12270877043fe429dcdfa439eb62dcbdad52f8646b96e6d15c7e4fa16fa2`
-* **Access Full Module:** [`loto-elec-03-capacitor-ups.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-03-capacitor-ups/)
+* **Cryptographic Signature:** `29fc12270877043f8b61d690b24e82f1780742afdb5a96cd88915a40ceae0c6b`
+* **Access Full Module:** [`loto-elec-03-capacitor-ups.md`]({{< relref "/docs/02-loto-standards/loto-elec-03-capacitor-ups" >}})
 
 ### 3.4. LOTO-ELEC-04: Internal Substation & Medium Voltage (MV) Switchgear Isolation SOP
 * **Target Equipment:** 22kV/0.4kV Distribution Transformers, Vacuum Circuit Breakers (VCB), Ring Main Units (RMU), and Medium Voltage Switchgear panels.
 * **Hazardous Energy Types:** 22,000VAC High Voltage Utility Power, 400VAC Low Voltage Main Busbars, and 110VDC Tripping Control Battery Supply.
 * **Key Protocol Highlight:** Sequential racking out of the VCB truck into the Test/Disconnected position, physical closure of the integrated Earthing Switch, mechanical key interlocking, and verification via Voltage Presence Indicating System (VPIS).
-* **Cryptographic Signature:** `f41c364dd5e0dabbf15f01e6a1789c09c3726fb51dbfc42f618fc6f54c9ffba8`
-* **Access Full Module:** [`loto-elec-04-substation-mv.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-04-substation-mv/)
+* **Cryptographic Signature:** `f41c364dd5e0dabbfd22411b02e8bdda37b445d878076700c130046d4eca4e12`
+* **Access Full Module:** [`loto-elec-04-substation-mv.md`]({{< relref "/docs/02-loto-standards/loto-elec-04-substation-mv" >}})
 
 ### 3.5. LOTO-ELEC-05: Industrial Electric Heating Element & Dry Oven Control Panel Isolation SOP
 * **Target Equipment:** Industrial Drying Ovens (180kW Total Load), Heavy-Duty Stainless Steel Heating Elements, Solid State Relays (SSR), and Digital PID Temperature Controllers.
 * **Hazardous Energy Types:** 400VAC 3-Phase High-Current Heating Power, 230VAC PID Control Supply, and Residual Thermal Energy (>200°C Chamber Environment).
 * **Key Protocol Highlight:** Isolation of 400VAC main heater breakers, LOTO padlock application on control circuit disconnects, and forced thermal cooldown monitoring until chamber internal temperature drops below 40°C before physical entry.
-* **Cryptographic Signature:** `df29de46e32701487ea0bcfbe8df261bb22f8721c57221df75fe334465b8df79`
-* **Access Full Module:** [`loto-elec-05-electric-heating.md`](https://nguyentridung-ot.github.io/ot-tech-blog/posts/loto-elec-05-electric-heating/)
+* **Cryptographic Signature:** `df29de46e3270148391e29cedabce411a1d46404311adfbea2006aa86e61c2b3`
+* **Access Full Module:** [`loto-elec-05-electric-heating.md`]({{< relref "/docs/02-loto-standards/loto-elec-05-electric-heating" >}})
 
 ---
 
@@ -134,10 +134,10 @@ Every individual LOTO procedure in this showcase includes a native JSON structur
   },
   "registered_sops": [
     { "sop_id": "LOTO-ELEC-01", "sha256": "da79d4cb758467bc468c5de458c3ad50b2c7d873862ea8590752ce872f5e6a54" },
-    { "sop_id": "LOTO-ELEC-02", "sha256": "94cb8cf90e91b8be6d38e23f009e530b147ea41ad9c3bcecb02b66d0ef06eb3c" },
-    { "sop_id": "LOTO-ELEC-03", "sha256": "29fc12270877043fe429dcdfa439eb62dcbdad52f8646b96e6d15c7e4fa16fa2" },
-    { "sop_id": "LOTO-ELEC-04", "sha256": "f41c364dd5e0dabbf15f01e6a1789c09c3726fb51dbfc42f618fc6f54c9ffba8" },
-    { "sop_id": "LOTO-ELEC-05", "sha256": "df29de46e32701487ea0bcfbe8df261bb22f8721c57221df75fe334465b8df79" }
+    { "sop_id": "LOTO-ELEC-02", "sha256": "94cb8cf90e91b8be9ec7a167d9fbf52fe1571f1b170ff66cccdfc588cbda4b92" },
+    { "sop_id": "LOTO-ELEC-03", "sha256": "29fc12270877043f8b61d690b24e82f1780742afdb5a96cd88915a40ceae0c6b" },
+    { "sop_id": "LOTO-ELEC-04", "sha256": "f41c364dd5e0dabbfd22411b02e8bdda37b445d878076700c130046d4eca4e12" },
+    { "sop_id": "LOTO-ELEC-05", "sha256": "df29de46e3270148391e29cedabce411a1d46404311adfbea2006aa86e61c2b3" }
   ]
 }
 ```

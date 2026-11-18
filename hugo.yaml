@@ -9,22 +9,7 @@ params:
   BookToC: true
   BookSection: "*"
 
-# Cấu hình Thanh điều hướng (Menu bên trái) 
-menu:
-  after:
-    - name: "📌 Giới thiệu (About Me)"
-      url: "/about/"
-      weight: 10
-    - name: "📚 Bài viết Kỹ thuật (Posts)"
-      url: "/posts/"
-      weight: 20
-
 markup: 
   goldmark: 
     renderer: 
       unsafe: true
-
-# Sửa lại chuẩn cú pháp Hugo mới nhất
-permalinks:
-  page:
-    docs: "/:sections[1:]/:slug/"

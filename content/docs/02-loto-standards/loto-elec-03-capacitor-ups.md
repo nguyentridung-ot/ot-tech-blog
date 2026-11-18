@@ -170,7 +170,7 @@ payload_data = {
   "author": "Nguyen Tri Dung (Industrial OT Authority)",
   "cmms_integration": {
     "isolation_type": "ELECTRICAL_AUTOMATION_LOCKOUT",
-    "permit_required": true,
+    "permit_required": True,
     "target_systems": [
       "SAP PM (Plant Maintenance)",
       "IBM Maximo Asset Management"
