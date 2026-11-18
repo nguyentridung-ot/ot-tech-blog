@@ -1,6 +1,7 @@
 ---
-title: "Kho Tri Thức Kỹ Thuật"
-weight: 1
-bookCollapseSection: false 
+title: "Technical Knowledge Base"
+weight: 10
+bookFlatSection: true
+bookCollapseSection: true 
 ---
-Tổng hợp hệ thống tài sản tri thức, bài học OPL và quy trình kỹ thuật.
+A consolidated repository of knowledge assets, One-Point Lessons (OPLs), and technical procedures.
