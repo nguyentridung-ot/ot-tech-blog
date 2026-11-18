@@ -1,5 +1,5 @@
 ---
-title: "LOTO Safety Procedures (OSHA 1910.147)"
+title: "02. LOTO Safety Procedures (OSHA 1910.147)"
 weight: 10
 bookFlatSection: true 
 bookCollapseSection: true
